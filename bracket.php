@@ -5,7 +5,7 @@ include("admin/functions.php");
 
 
 $tiebreaker = $_POST['tiebreaker'];
-$bracketname = $_POST['bracketname'];  
+$bracketname = $_POST['bracketname'];
 $person = $_POST['name'];
 $email = $_POST['e-mail']; 
 //$submitpassword = htmlentities($_POST['password']); 

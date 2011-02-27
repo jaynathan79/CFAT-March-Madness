@@ -29,7 +29,6 @@ if ($_REQUEST['action'] == 'register'){
         //       client for determining whether or not a username is available and whether passwords
         //       match and are complex enough.
     }
-
 }
 
 ?>
