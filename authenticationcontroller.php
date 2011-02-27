@@ -9,7 +9,7 @@ if($_REQUEST['action'] == "login"){
     // do login
     if($log->login("logon", $_REQUEST['username'], $_REQUEST['password']) == true){
         // assuming login request is successful, redirect to game page
-
+        echo ("Login succeeded.");
     }else{
         // redirect back to login page
         header('Location: login.php?result=loginfailed');
