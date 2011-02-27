@@ -395,9 +395,8 @@ h3 a, h4 a, h5 a, h6 a {
   letter-spacing: .5px;
   font-size: 12px;
   font-weight: 600; }
-#logo a {
-  height: 60px;
-  background: url("http://static.mailchimp.com/www/images/main_logo.png") no-repeat scroll 30px 0px transparent; }
+
+	
 nav.mainnav {
   margin: 10px 15px 0px 0;
   float: right; }
@@ -438,17 +437,13 @@ nav.mainnav {
       font-weight: 700; }
     nav.mainnav li.current {
       background: #fff; }
-    nav.mainnav li:not(:last-child):hover {
-      background: #fafafa;
+    nav.mainnav li:hover {
+	  background: #fafafa;
       background: rgba(255, 255, 255, 0.9); }
-    nav.mainnav li.pricing {
-      width: 71px; }
-    nav.mainnav li.features {
+    nav.mainnav li.contact {
       width: 81px; }
-    nav.mainnav li.resources {
-      width: 92px; }
-    nav.mainnav li.support {
-      width: 78px; }
+    nav.mainnav li.learnmore {
+      width: 100px; }
     nav.mainnav li.blog {
       width: 57px; }
 nav.insetnav {
