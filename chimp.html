@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html id='signup'>
   <head>
-    <title>Sign Up | MailChimp</title>
+    <title>Sign Up | Change for a $10</title>
     <link href='css/site.css' media='screen, projection' rel='stylesheet' type='text/css' />
     <meta charset="utf-8" />
     <meta name="language" content="en"/>
@@ -26,7 +26,8 @@
     <meta property ='og:image' content = '/images/opengraph-freddie.png'/>
     <meta property ='og:location' content = 'Atlanta, GA'/>
     <script type="text/javascript">
-    
+
+    /* TODO: REPLACE WITH CFAT GOOGLE ANALYTICS TRACKING CODE
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-329148-25']); // New Tracking ID
       _gaq.push(['_trackPageview']);
@@ -36,7 +37,8 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-    
+      */
+     
     </script>
   </head>
   <body>
@@ -112,14 +114,12 @@
           </div>
           <div class='unit size1of2'>
             <div class='in15'>
-              <form action='/svc_signup_voxel/post.php' id='signupform' method='post' name='tryit'>
-                <input name='formURL' type='hidden' value='signup/' />
-                <input name='confirmationURL' type='hidden' value='signup/success/' />
-                <input name='activationREF' type='hidden' value='' />
+              <form action='authenticationcontroller.php' id='registerform' method='post' name='tryit'>
+                <input name="action" id="action" value="register" type="hidden">
 
                 <div class='line'>
                   <label for='email'>Email</label>
-                  <input class='required big two-column' id='email' name='email' type='email' value='' />
+                  <input class='required big two-column' id='registerusername' name='registerusername' type='email' value='' />
                 </div>
                 <div class='line'>
                   <label for='username'>Name</label>
@@ -130,14 +130,14 @@
                   <div class='unit size1of2'>
                     <div class='right15'>
                       <label for='password'>Password</label>
-                      <input class='required big one-column' id='password' name='password' type='password' value='' />
+                      <input class='required big one-column' id='registerpassword' name='registerpassword' type='password' value='' />
                     </div>
                   </div>
                   <div class='unit size1of2'>
 
                     <div class='left15'>
                       <label for='password_confirm' id='confirm'>Confirm Password</label>
-                      <input class='required big one-column' id='password_confirm' name='password_confirm' type='password' />
+                      <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' />
                     </div>
                   </div>
                 </div>

@@ -20,6 +20,8 @@ if (isset($_GET['email'])){
     exit;
 }
 
+header('Content-type: application/json');
+
 echo $json_result;
 
 ?>

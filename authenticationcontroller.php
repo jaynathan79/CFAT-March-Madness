@@ -9,7 +9,7 @@ if($_REQUEST['action'] == "login"){
     // do login
     if($log->login("logon", $_REQUEST['username'], $_REQUEST['password']) == true){
         // assuming login request is successful, redirect to game page
-
+        echo ("Login succeeded.");
     }else{
         // redirect back to login page
         header('Location: login.php?result=loginfailed');
@@ -18,7 +18,9 @@ if($_REQUEST['action'] == "login"){
 
 if ($_REQUEST['action'] == 'register'){
 
-    if($log->register($_REQUEST['registerusername'], $_REQUEST['registerpassword']) == true){
+    $displayname = substr($_REQUEST['registerusername'], 0, strrpos($_REQUEST['registerusername'], "@"));
+    
+    if($log->register($_REQUEST['registerusername'], $_REQUEST['registerpassword'], $displayname) == true){
         // redirect to game
         echo "successful registration, redirect to game.";
     } else {
@@ -29,7 +31,6 @@ if ($_REQUEST['action'] == 'register'){
         //       client for determining whether or not a username is available and whether passwords
         //       match and are complex enough.
     }
-
 }
 
 ?>
