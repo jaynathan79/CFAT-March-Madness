@@ -19,9 +19,9 @@ header img {
 }
 
 section {
-	margin-top: 1em;
+	
 	font-size: 120%;
-	padding: 20px;
+	/*padding: 20px;*/
 	background: #fff;
 }
 
@@ -32,12 +32,16 @@ section h1 {
 	font-weight: 700;
 }
 
+#padded {
+	padding: 15px;
+}
+
 .content {
 	min-height: 300px;
 	background-image:url('../images/diagonal-gray.png');
 	width: 960px;
 	margin: 0 auto;
-  	padding: 15px;
+  	/*padding: 15px;*/
   	position: relative;
   	z-index: 10;
 }
@@ -54,39 +58,7 @@ section h1 {
 
 }
 
-/* buttons */
-/*
-.btn {
-	float: left;
-	clear: both;
-	background: url(../images/btn_left.png) no-repeat;
-	padding: 0 0 0 10px;
-	margin: 5px 0;
-}
-.btn a{
-	float: left;
-	height: 40px;
-	background: url(../images/btn_stretch.png) repeat-x left top;
-	line-height: 40px;
-	padding: 0 10px;
-	color: #fff;
-	font-size: 1em;
-	text-decoration: none;
-}
-.btn span {
-	background: url(../images/btn_right.png) no-repeat;
-	float: left;
-	width: 10px;
-	height: 40px;
-}
-.btn_join { background-color: green; }
-.clear {
-	clear: both;
-}
-*/
-
 /* Links */
-
 a {
 	color: #09c;
 	text-decoration: none;
@@ -102,7 +74,6 @@ a:visited {
 }
 
 /* Navigation */
-
 nav {
 	float: right;
 	height: 30px;
@@ -110,6 +81,7 @@ nav {
 	background-color: white;
 	padding: 0 0.7em;
 	white-space: nowrap;
+	background-image:url('../images/diagonal-gray.png');
 	
 }
 
@@ -170,78 +142,11 @@ footer {
 	margin-right: auto;
 	margin-top: 10px;
 	text-align: center;
-	width: 960;
+	width: 960px;
 }
 
 footer nav {
 	float: none;
-}
-
-/* User show page */
-table.profile { 
-	width: 100%; 
-	margin-bottom: 0;
-}
-
-td.main { 
-	width: 70%; 
-	padding: 1em;
-}
-
-td.sidebar { 
-	width: 30%; 
-	padding: 1em; 
-	vertical-align: top; 
-	background: #ffc;
-}
-
-.profile img.gravatar { 
-	border: 1px solid #999; 
-	margin-bottom: -15px;
-}
-
-div.field, div.actions {
-	margin-bottom: 10px;
-}
-
-.field_with_errors {
-	margin-top: 10px; 
-	padding: 2px; 
-	background-color: red; 
-	display: table;
-} 
-
-.field_with_errors label {
-	color: #fff;
-}
-#error_explanation { 
-	width: 400px; 
-	border: 2px solid red; 
-	padding: 7px; 
-	padding-bottom: 12px; 
-	margin-bottom: 20px; 
-	background-color: #f0f0f0;
-}
-
-#error_explanation h2 { 
-	text-align: left; 
-	font-weight: bold; 
-	padding: 5px 5px 5px 15px; 
-	font-size: 12px;
-	margin: -7px; 
-	background-color: #c00; 
-	color: #fff;
-}
-
-#error_explanation p { 
-	color: #333; 
-	margin-bottom: 0; 
-	padding: 5px;
-} 
-
-#error_explanation ul li {	
-	font-size: 12px; 
-	list-style: square;
 }
 
 /* Layout */
@@ -276,98 +181,3 @@ div.field, div.actions {
 
 
 
-.line:after, hr:after {
-  clear: both;
-  display: block;
-  visibility: hidden;
-  overflow: hidden;
-  height: 0 !important;
-  line-height: 0;
-  font-size: xx-large;
-  content: " x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x "; 
-}
-
-.line, hr{
-  *zoom: 1; 
-}
-
-
-
-form .line, form hr {
-  margin-top: 15px; }
-form label, form input, form textarea {
-  float: left;
-  clear: both; }
-  form label:focus, form input:focus, form textarea:focus {
-    outline-width: 0; }
-form label {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 3px; }
-form input[type=submit] {
-  cursor: pointer; }
-form input[type=text], form input[type=email], form input[type=password] {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-top: 1px solid #ccc;
-  background: #fafafa;
-  font-weight: 300;
-  color: #65645a;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px; }
-  form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus {
-    border: 1px solid #ccc; }
-  form input[type=text].big, form input[type=email].big, form input[type=password].big {
-    font-size: 20px;
-    font-weight: normal;
-    background: none;
-    border: none;
-    padding: 12px 0;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #fff;
-    background: #fafafa;
-    color: #65645A; }
-  form input[type=text].valid, form input[type=email].valid, form input[type=password].valid {
-    background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% 15px no-repeat; }
-  form input[type=text].invalid, form input[type=email].invalid, form input[type=password].invalid {
-    background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% -77px no-repeat; }
-  form input[type=text].two-column, form input[type=email].two-column, form input[type=password].two-column {
-    width: 430px;
-    padding-left: 16px; }
-    form input[type=text].two-column.in-inset, form input[type=email].two-column.in-inset, form input[type=password].two-column.in-inset {
-      width: 404px; }
-  form input[type=text].one-column, form input[type=email].one-column, form input[type=password].one-column {
-    width: 190px;
-    padding-left: 16px; }
-form input[type=password].valid {
-  background-position: 90% 15px; }
-form input[type=password].invalid {
-  background-position: 90% -77px; }
-form textarea {
-  padding: 5px 10px;
-  border: none;
-  border: 1px solid #ddd;
-  border-top: 1px solid #ccc;
-  background: #fafafa;
-  font-weight: 700;
-  color: #65645a;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px; }
-  form textarea:focus {
-    border: 1px solid #ccc; }
-form select {
-  padding: 5px 10px;
-  border: none;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #fff;
-  background: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-  color: #65645a;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px; }
