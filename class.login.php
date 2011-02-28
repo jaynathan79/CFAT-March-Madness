@@ -248,7 +248,7 @@ class logmein {
 	}
          */
 
-        function register($username, $password){
+        function register($username, $password, $displayname){
             //conect to DB
             $this->dbconnect();
 
@@ -259,7 +259,7 @@ class logmein {
 
             try{
                 //execute registration via qry function that prevents MySQL injections
-                $result = $this->qry("INSERT INTO ".$this->user_table." (useremail, password) VALUES('?','?')", $username, $password);
+                $result = $this->qry("INSERT INTO ".$this->user_table." (useremail, password, displayname) VALUES('?','?','?')", $username, $password, $displayname);
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
                 exit;

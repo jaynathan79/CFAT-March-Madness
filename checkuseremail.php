@@ -21,6 +21,7 @@ if (isset($_GET['email'])){
 }
 
 header('Content-type: application/json');
+
 echo $json_result;
 
 ?>

@@ -18,7 +18,9 @@ if($_REQUEST['action'] == "login"){
 
 if ($_REQUEST['action'] == 'register'){
 
-    if($log->register($_REQUEST['registerusername'], $_REQUEST['registerpassword']) == true){
+    $displayname = substr($_REQUEST['registerusername'], 0, strrpos($_REQUEST['registerusername'], "@"));
+    
+    if($log->register($_REQUEST['registerusername'], $_REQUEST['registerpassword'], $displayname) == true){
         // redirect to game
         echo "successful registration, redirect to game.";
     } else {
