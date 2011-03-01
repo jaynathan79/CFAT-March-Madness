@@ -1,7 +1,7 @@
 <?php
 include("cfatheader.php");
 ?>
-<h1>Create Your Change for a $10 Account</h1>
+<h1>Create Your Change for a 10 Account</h1>
 
 <table>
 	<tr>
@@ -9,18 +9,19 @@ include("cfatheader.php");
 			<form action='authenticationcontroller.php' id='registerform' method='post' name='tryit'>
 			    <input name="action" id="action" value="register" type="hidden">
 
-			    <label for='email'>Email</label><br/>
-			    <input class='required big two-column' id='registerusername' name='registerusername' type='email' value='' /><br/>
-			    <label for='username'>Name</label><br/>
-			    <input class='required big two-column' id='username' name='username' type='text' value='' /><br/>
-			    <label for='password'>Password</label><br/>
-			    <input class='required big one-column' id='registerpassword' name='registerpassword' type='password' value='' /><br/>
-			    <label for='password_confirm' id='confirm'>Confirm Password</label><br/>
-			    <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' /><br/>
-			    <sub>
-					At least 6 characters, including a number / special character
-			    </sub><br/><br/>
-			    <input class="btn_join" name='submit' type='submit' value='Join Us Now!' /><br/>
+				
+				
+				<label for="email">Email:</label><br/>
+				<input id="email" maxlength="50" name="email" size="25" type="textbox" placeholder="you@yourhost.com" /><br/><br>
+				<label for="password">Password:</label><br/>
+				<input id="password" maxlength="50" name="password" size="15" type="password" /><br/><br>
+				<label for="passwordconfirm">Confim Password:</label><br/>
+				<input id="passwordconfirm" maxlength="50" name="passwordconfirm" size="15" type="password" /><br/><br/>
+
+				<button class="ui-button ui-button-text-only ui-widget ui-state-default ui-corner-all" name='submit' type='submit'>
+				   <span class="ui-button-text">Join Now!</span>
+				</button>
+			
 			    <p>
 			        By clicking this button, you agree to the <a href="/legal/terms" target="_blank">Privacy Policy &amp; Terms of Use</a>
 			    </p>
