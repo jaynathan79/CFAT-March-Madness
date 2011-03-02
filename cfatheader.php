@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>[TITLE]</title>
+  <title>Hoops for Hunger by Change for a 10</title>
 <link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
 </head>

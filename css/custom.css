@@ -179,5 +179,70 @@ footer nav {
 .size1of8 {
   width: 12.5%; }
 
+sub {
+  font-size:12px;
+  font-style:italic;
+  line-height:20px;
+}
 
+form .line, form hr, form .fancybg, form .signupbg, form .banner, form .bannerbg, form .lost-banner, form .lost-bannerbg {
+  margin-top:15px;
+}
+
+form input[type=text].big, form input[type=email].big, form input[type=password].big {
+    font-size: 20px;
+    font-weight: normal;
+    background: none;
+    border: none;
+    padding: 12px 0;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    background: #fafafa;
+    color: #65645A; }
+
+form input[type=text].valid, form input[type=email].valid, form input[type=password].valid {
+    background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% 15px no-repeat; }
+  form input[type=text].invalid, form input[type=email].invalid, form input[type=password].invalid {
+    background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% -77px no-repeat; }
+  form input[type=text].two-column, form input[type=email].two-column, form input[type=password].two-column {
+    width: 430px;
+    padding-left: 16px; }
+    form input[type=text].two-column.in-inset, form input[type=email].two-column.in-inset, form input[type=password].two-column.in-inset {
+      width: 404px; }
+  form input[type=text].one-column, form input[type=email].one-column, form input[type=password].one-column {
+    width: 190px;
+    padding-left: 16px; }
+form input[type=password].valid {
+  background-position: 90% 15px; }
+form input[type=password].invalid {
+  background-position: 90% -77px; }
+
+
+
+.size1of2 {
+  width: 50%; }
+
+.right15 {
+  padding-right: 15px; }
+.left15 {
+  padding-left: 15px; }
+
+form label {
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:3px;
+  vertical-align: baseline;
+}
+
+form label, form input, form textarea {
+  clear:both;
+  float:left;
+}
+
+.in15 {
+  padding-right: 15px;
+  padding-left: 15px; }
 
