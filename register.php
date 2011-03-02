@@ -55,6 +55,7 @@ include("cfatheader.php");
                             </form>
                         </div>
                     </div>
+				
 		</td>
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
@@ -75,7 +76,6 @@ include("cfatheader.php");
                 </td>
             </tr>
         </table>
-
 <?php
 include("cfatfooter.php");
 ?>

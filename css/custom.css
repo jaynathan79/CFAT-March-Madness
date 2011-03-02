@@ -1,5 +1,6 @@
 .container {
 	width: 960px;
+	margin:0 auto;
 }
 
 body {
@@ -7,6 +8,11 @@ body {
 	background-image:url('../images/topbackground.jpg');
 	background-repeat:repeat-x;	
 	font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+}
+
+
+label {
+	color: #252525;
 }
 
 header {
