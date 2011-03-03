@@ -9,7 +9,7 @@ include("cfatheader.php");
 
                     <div class="unit size1of2">
                         <div class="in15">
-                            <form action='authenticationcontroller.php' id='registerform' method='post' name='tryit'>
+                            <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
                             <table>
                                 <tr>
                                     <td colspan="2">

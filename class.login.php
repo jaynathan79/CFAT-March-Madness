@@ -2,7 +2,9 @@
 //start session
 session_start();
 
+
 class logmein {
+
 	//database setup
        //MAKE SURE TO FILL IN DATABASE INFO
 	var $hostname_logon = 'localhost';		//Database server LOCATION
@@ -27,34 +29,28 @@ class logmein {
 	}
 
 	//login function
-	function login($table, $username, $password){
+	function login($username, $password){
 		//conect to DB
 		$this->dbconnect();
-		//make sure table name is set
-		if($this->user_table == ""){
-			$this->user_table = $table;
-		}
-		//check if encryption is used
+
+                //check if encryption is used
 		if($this->encrypt == true){
 			$password = md5($password);
 		}
 		//execute login via qry function that prevents MySQL injections
-		$result = $this->qry("SELECT * FROM ".$this->user_table." WHERE ".$this->user_column."='?' AND ".$this->pass_column." = '?';" , $username, $password);
+		$result = $this->qry("SELECT userid FROM ".$this->user_table." WHERE ".$this->user_column."='?' AND ".$this->pass_column." = '?';" , $username, $password);
 		$row=mysql_fetch_assoc($result);
 		if($row != "Error"){
-			if($row[$this->user_column] !="" && $row[$this->pass_column] !=""){
-				//register sessions
-				//you can add additional sessions here if needed
-				$_SESSION['loggedin'] = $row[$this->pass_column];
-				//userlevel session is optional. Use it if you have different user levels
-				$_SESSION['userlevel'] = $row[$this->user_level];
-				return true;
+			if($row['userid'] > -1 ){
+                                // echo "break 1 - ".$row['userid'];
+				return $row['userid'];
 			}else{
-				session_destroy();
-				return false;
+                                echo "break 2";
+				return -1;
 			}
 		}else{
-			return false;
+                        echo "break 3";
+			return -1;
 		}
 
 	}
@@ -68,6 +64,8 @@ class logmein {
             $args  = array_map('mysql_real_escape_string', $args);
             array_unshift($args,$query);
             $query = call_user_func_array('sprintf',$args);
+            echo $query."<br/><br/>";
+            
             $result = mysql_query($query) or die(mysql_error());
             if($result){
                 return $result;
@@ -259,14 +257,33 @@ class logmein {
 
             try{
                 //execute registration via qry function that prevents MySQL injections
+                // TODO: check that username is a valid email address
+                // TODO: check that email address isn't already registered
+                // TODO: check that displayname isn't duplicated and concatenate an incremental number if so
                 $result = $this->qry("INSERT INTO ".$this->user_table." (useremail, password, displayname) VALUES('?','?','?')", $username, $password, $displayname);
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
-                exit;
-                // return false;
+                return false;
             }
 
-            return true;
+            echo "<br/>".$username."<br/>";
+
+
+            // if we make it here, account was successfully created, so we grab userid
+            $result = $this->qry("SELECT userid FROM ".$this->user_table." WHERE ".$this->user_column." = '?';" , $username);
+            $rownum = mysql_num_rows($result);
+            $row=mysql_fetch_assoc($result);
+            //return userid if login was successful and -1 if not
+            if($row != "Error"){
+                    if($rownum > 0){
+                       return true;
+                    }else{
+                       return false;
+                    }
+            }
+            
+            // if we make it here registration failed
+            return false;
         }
 
          function isemailtaken($email){
