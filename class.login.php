@@ -1,4 +1,6 @@
 <?php
+
+include("admin/database.php");
 //start session
 session_start();
 
@@ -7,10 +9,10 @@ class logmein {
 
 	//database setup
        //MAKE SURE TO FILL IN DATABASE INFO
-	var $hostname_logon = 'localhost';		//Database server LOCATION
-	var $database_logon = 'ncaa';		//Database NAME
-	var $username_logon = 'root';		//Database USERNAME
-	var $password_logon = 'admin';		//Database PASSWORD
+	var $hostname_logon = "localhost";		//Database server LOCATION
+	var $database_logon = "ncaa";		//Database NAME
+	var $username_logon = "root";		//Database USERNAME
+	var $password_logon = "admin";		//Database PASSWORD
 
 	//table fields
 	var $user_table = 'users';		//Users table name
@@ -18,15 +20,23 @@ class logmein {
 	var $pass_column = 'password';		//PASSWORD column
 	var $user_level = 'userlevel';		//(optional) userlevel column
 
+        // global error messages
+        var $last_error_message = "";
+
 	//encryption
 	var $encrypt = false;		//set to true to use md5 encryption for the password
 
 	//connect to database
 	function dbconnect(){
-		$connections = mysql_connect($this->hostname_logon, $this->username_logon, $this->password_logon) or die ('Unabale to connect to the database');
-		mysql_select_db($this->database_logon) or die ('Unable to select database!');
-		return;
+            $connections = mysql_connect($this->hostname_logon, $this->username_logon, $this->password_logon) or die ('Unabale to connect to the database');
+            mysql_select_db($this->database_logon) or die ('Unable to select database!');
+            return;
 	}
+
+        function get_last_error()
+        {
+            return $last_error_message;
+        }
 
 	//login function
 	function login($username, $password){
@@ -41,15 +51,13 @@ class logmein {
 		$result = $this->qry("SELECT userid FROM ".$this->user_table." WHERE ".$this->user_column."='?' AND ".$this->pass_column." = '?';" , $username, $password);
 		$row=mysql_fetch_assoc($result);
 		if($row != "Error"){
-			if($row['userid'] > -1 ){
-                                // echo "break 1 - ".$row['userid'];
-				return $row['userid'];
-			}else{
-                                echo "break 2";
-				return -1;
-			}
+		   if($row['userid'] > -1 ){
+                        // echo "break 1 - ".$row['userid'];
+                        return $row['userid'];
+                    }else{
+                        return -1;
+                    }
 		}else{
-                        echo "break 3";
 			return -1;
 		}
 
@@ -64,7 +72,6 @@ class logmein {
             $args  = array_map('mysql_real_escape_string', $args);
             array_unshift($args,$query);
             $query = call_user_func_array('sprintf',$args);
-            echo $query."<br/><br/>";
             
             $result = mysql_query($query) or die(mysql_error());
             if($result){
@@ -229,24 +236,13 @@ class logmein {
 				<div><input name="submit" id="submit" value="Reset Password" type="submit"></div>
 			</form>';
 	}
-        /*
-	//function to install logon table
-	function cratetable($tablename){
-		//conect to DB
-		$this->dbconnect();
-		$qry = "CREATE TABLE IF NOT EXISTS ".$tablename." (
-			  userid int(11) NOT NULL auto_increment,
-			  useremail varchar(50) NOT NULL default '',
-			  password varchar(50) NOT NULL default '',
-			  userlevel int(11) NOT NULL default '0',
-			  PRIMARY KEY  (userid)
-			)";
-		$result = mysql_query($qry) or die(mysql_error());
-		return;
-	}
-         */
+        
+        function register($username, $password, $confirm_password, $displayname){
 
-        function register($username, $password, $displayname){
+            if(!$this->is_registration_valid){
+                return false;
+            }
+
             //conect to DB
             $this->dbconnect();
 
@@ -266,36 +262,97 @@ class logmein {
                 return false;
             }
 
-            echo "<br/>".$username."<br/>";
-
-
             // if we make it here, account was successfully created, so we grab userid
             $result = $this->qry("SELECT userid FROM ".$this->user_table." WHERE ".$this->user_column." = '?';" , $username);
             $rownum = mysql_num_rows($result);
             $row=mysql_fetch_assoc($result);
             //return userid if login was successful and -1 if not
             if($row != "Error"){
-                    if($rownum > 0){
-                       return true;
-                    }else{
-                       return false;
-                    }
+                if($rownum > 0){
+                   return true;
+                }else{
+                   return false;
+                }
             }
             
             // if we make it here registration failed
             return false;
         }
 
-         function isemailtaken($email){
+        function is_registration_valid($username, $password, $confirmpassword){
+
+            $this->last_error_message = "";
+
+            if($username == "" || $password == "" || $confirmpassword == "")
+            {
+                $this->last_error_message = "All fields are required.";
+                return false;
+            };
+
+            /*
+            if(!$this->is_valid_email_address($username)) {
+                $this->last_error_message = "Email address is invalid. Please enter a valid email address.";
+                return false;
+            };
+             */
+
+            if($this->is_email_taken(trim($username))) {
+                $this->last_error_message = "This email address is already in use. Please use another one.";
+                return false; // registration fails if email already in the database
+            };
+
+            if($password != $confirmpassword){
+                $this->last_error_message = "Passwords must match.";
+                return false;
+            };
+
+            return true;
+        }
+
+         function is_email_taken($email){
             // connect to DB
             $this->dbconnect();
 
             $result = $this->qry("SELECT useremail FROM ".$this->user_table." WHERE ".$this->user_column." = '?';", $email);
             if(mysql_num_rows($result) > 0){
                 return true;
-            }else{
+            } else {
                 return false;
             }
+
+            return false;
         }
+
+        function is_valid_email_address($email) {
+          // First, we check that there's one @ symbol,
+          // and that the lengths are right.
+          if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+            // Email invalid because wrong number of characters
+            // in one section or wrong number of @ symbols.
+            return false;
+          }
+          // Split it into sections to make life easier
+          $email_array = explode("@", $email);
+          $local_array = explode(".", $email_array[0]);
+          for ($i = 0; $i < sizeof($local_array); $i++) {
+            if(!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$", $local_array[$i])) {
+              return false;
+            }
+          }
+          // Check if domain is IP. If not,
+          // it should be valid domain name
+          if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
+            $domain_array = explode(".", $email_array[1]);
+            if (sizeof($domain_array) < 2) {
+                return false; // Not enough parts to domain
+            }
+            for ($i = 0; $i < sizeof($domain_array); $i++) {
+              if(!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$", $domain_array[$i])) {
+                return false;
+              }
+            }
+          }
+          return true;
+    }
 }
 ?>

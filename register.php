@@ -9,7 +9,11 @@ include("cfatheader.php");
 
                     <div class="unit size1of2">
                         <div class="in15">
-                            <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
+                            <div id="error" class="error">
+                                There was a problem with your registration.
+                            </div>
+                            <form action='registrationcontroller.php' id='registerform' onsubmit='return false;' method='post' name='tryit'>
+                                <input name="action" id="action" value="register" type="hidden"/>
                             <table>
                                 <tr>
                                     <td colspan="2">
@@ -36,7 +40,7 @@ include("cfatheader.php");
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input class="btn_join" name='submit' type='submit' value='Join Us Now!' />
+                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Join Us Now!' />
                                         <br/>
                                         <br/>
                                     </td>
@@ -76,6 +80,35 @@ include("cfatheader.php");
                 </td>
             </tr>
         </table>
+
+        <script type="text/javascript" language="javascript">
+
+            $(document).ready(function(){
+                $("#error").hide();
+
+                $('#registerform').submit(function(event){
+                    var username = $("input#registerusername").val();
+                    var password = $("input#registerpassword").val();
+                    var confirmpassword = $("input#registerconfirmpassword").val();
+                    var data = {};
+                    data['username'] = username;
+                    data['password'] = password;
+                    data['confirmpassword'] = confirmpassword;
+
+                    $.getJSON('validateregistration.php', data, function(jd){
+                        if(!jd.isvalid){
+                            $("#error").html(jd.errormessage);
+                            $("#error").show();
+                            $("#error").effect("shake", {times:1}, 100);
+                        } else {
+                            document.forms['registerform'].submit();
+                        }
+                    });
+                });
+            });
+
+        </script>
+
 <?php
 include("cfatfooter.php");
 ?>
