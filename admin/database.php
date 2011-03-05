@@ -7,6 +7,12 @@ $database = "ncaa";
 $user = "root";
 $pass = "admin";
 $host = "127.0.0.1";
+
+$database = "tourney";
+$user = "root";
+$pass = "root";
+$host = "localhost:8888";
+
 /*
  * Add a full URL to your site install, like:
  * $tourneyURL = "http://tourney.example.com/";

@@ -1,3 +1,6 @@
+<?php
+include("admin/database.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +31,17 @@
 			$( "#repeat" ).buttonset();
 		});
 	</script>
+	
+	<!-- from tourney header -->
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/emailall.js"></script>
+	<?php
+	//if this is the submit or what-if page, include the necessary javascript
+	if(strpos($_SERVER['PHP_SELF'],"submit.php") !== FALSE || strpos($_SERVER['PHP_SELF'],"whatif.php") !== FALSE) {
+	?>
+	<script type="text/javascript" src="js/submitwhatif.js"/>
+	<?php } ?>
+	<!-- end from tourney header -->
 	
 	
 </head>

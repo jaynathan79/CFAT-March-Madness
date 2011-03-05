@@ -1,5 +1,6 @@
 <?php
-include("header.php");
+include("cfatheader.php");
+include("menu.php");
 include("admin/functions.php");
  
 $query = "SELECT * FROM `blog` ORDER BY id DESC LIMIT 3";
@@ -70,8 +71,6 @@ if($blog == NULL) {
 			
 		</div>
 		
-		<div id="footer">
-		</div>
-	</div>
-</body>
-</html>
+<?php
+	include("cfatfooter.php");
+?>
