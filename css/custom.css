@@ -56,8 +56,8 @@ section h1 {
 	background: none;
 	border: none;
 	background-image:url('../images/BlueButton_Take5.png');
-	width: 212px;
-	height: 52px;
+	width: 210px;
+	height: 50px;
 	color: white;
 	font-size: 15pt;
 	text-shadow: 1px 1px 0px #000;
@@ -68,7 +68,6 @@ section h1 {
     background-color: #FFBABA;
     background-image: url('../images/error.png');
 }
-
 
 /* Links */
 a {
@@ -164,7 +163,9 @@ nav.blacknavleft {
     height: 30px;
     font-size: 14pt;
     font: bolder;
-    color: #06c;
+    /* color: #00addc; */
+    color: #000000;
+    /* color: #06c; */
     padding: 10px;
     white-space: nowrap;
      -moz-border-radius: 10px;

@@ -1,18 +1,20 @@
 <?php
 // session_start();
-date_default_timezone_set('America/Los_Angeles');
+// date_default_timezone_set('America/Los_Angeles');
 
 include("cfatheader.php");
 
 ?>
-        <h1>Welcome, to Change for a 10. Together we'll do big things.</h1>
-        <h3>This month...</h3>
-
+        <h1>Welcome to Change for a 10</h1>
         <table style="width: 100%">
             <tr>
 		<td style="vertical-align: top;" colspan="2">
+                    <div style="font-size: 16pt;">This month...</div>
                     <div style="text-align: center;">
-                        <img src="http://placekitten.com/850/200">
+                        <a onclick="document.forms.paypal.submit();return false;" href="#">
+                            <img src="images/HoopsFightHungerBanner2.jpg">
+                        </a>
+                        <!-- img src="http://placekitten.com/850/200" -->
                     </div>
                 </td>
             </tr>
@@ -24,36 +26,10 @@ include("cfatheader.php");
                 </td>
             </tr>
             <tr>
-                <td style="width: 50%; text-align: center;">
-                    <nav class="round bluenavright">
-                        <ul>
-                            <li>
-                                <a onclick="document.forms.paypal.submit();return false;" href="#">Let's play! And i want to <u>DONATE</u>.</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </td>
-                <td style="width: 50%; text-align: center;">
-                    <nav class="round bluenavleft">
-                        <ul>
-                            <li><a href="">No donation, but I'd like to play...</a></li>
-                        </ul>
-                    </nav>
+                <td style="text-align: center;">
+                    <a onclick="document.forms.paypal.submit();return false;" href="#">Let's play! And i want to <u>DONATE</u>.</a>
                 </td>
             </tr>
-            <tr>
-                <td style="vertical-align: top;">
-                    <div class="footnote">
-                        1 standard credit card transaction fees apply. Change for a 10 pass on 100% of proceeds after transaction fees to hunger-related nonprofits.
-                    </div>
-                </td>
-                <td style="vertical-align: top;">
-                    <div class="footnote">
-                        2 Participants that play without donating are still eligible to place 1st, 2nd, or 3rd and direct money to a hunger-related charity of their choice, as described in the “Play and Donate” section
-                    </div>
-                </td>
-            </tr>
-
         </table>
 
         <form id="paypal" target="_top" action="https://www.paypal.com/cgi-bin/webscr" method="post">

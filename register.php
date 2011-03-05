@@ -1,5 +1,5 @@
 <?php
-include("cfatheader.php");
+    include("cfatheader.php");
 ?>
         <h1>Create Your Change for a 10 Account</h1>
 
@@ -12,7 +12,7 @@ include("cfatheader.php");
                             <div id="error" class="error">
                                 There was a problem with your registration.
                             </div>
-                            <form action='registrationcontroller.php' id='registerform' onsubmit="return false;" method='post' name='tryit'>
+                            <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
                                 <input name="action" id="action" value="register" type="hidden"/>
                             <table>
                                 <tr>
@@ -40,7 +40,7 @@ include("cfatheader.php");
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Join Us Now!' />
+                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Signup' />
                                         <br/>
                                         <br/>
                                     </td>
@@ -64,15 +64,25 @@ include("cfatheader.php");
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
                         <div class="in15">
-                            <h2 class='top20'>Join us now!</h2>
-                            <p>
-                                Change for a $10 is blah blah blah.
+                            <div style="font-size: 14pt">Join us now!</div>
+                            <p style="font-size: 10pt">
+                                What can a $10 donation from one person really accomplish? What difference will adding 10 of your friends really have?
                             </p>
-                            <h3 class='top20'>Did you know?.</h3>
-                            <p class='bottom0'>
-                                Other stuff to tell them.
+                            <p style="font-size: 10pt">
+                                How quickly can one nonprofit attract a network of passionate supporters so large that it can do big things through small donations?
                             </p>
-                            <h3 class='top20'>
+
+                            <div style="font-size: 14pt">Inaugural “Hoops to Fight Hunger” Event</div>
+                            <p style="font-size: 10pt; ">
+                                Change for a 10 is about much more than a basketball pool to raise money for hunger-related nonprofits.
+                            </p>
+                            <p style="font-size: 10pt; ">
+                                Before we have our “big launch” later this year, we wanted to have a little fun with “March Madness”.
+                                <br/><br/>
+Let's see how many people we can get to join a pool where you donate $10 to fight hunger as opposed to paying $10 for an office pool.
+                            </p>
+
+                            <h3 class='top10'>
                                 <a href='/learnmore' title='Learn More'>Learn More</a>
                             </h3>
                         </div>
@@ -83,36 +93,69 @@ include("cfatheader.php");
 
         <script type="text/javascript" language="javascript">
 
+            function stopEvent(e) {
+                if (e.stopPropagation) e.stopPropagation();
+                else e.cancelBubble = true;
+
+                if (e.preventDefault) e.preventDefault();
+                else e.returnValue = false;
+            }
+
             $(document).ready(function(){
                 $("#error").hide();
 
+                // $('#registerform').submit(function(event){
                 $('#submit').click(function(event){
-                    var username = $("input#registerusername").val();
-                    var password = $("input#registerpassword").val();
-                    var confirmpassword = $("input#registerconfirmpassword").val();
-                    var data = {};
-                    data['username'] = username;
-                    data['password'] = password;
-                    data['confirmpassword'] = confirmpassword;
+                    /*if(event.originalEvent.originalEventTarget.id == "submit"){
+                        if()
+                    }*/
+                
+                    var isvalid = false;
 
-                    $.getJSON('validateregistration.php', data, function(jd){
+                    var data = {};
+                    data['username'] = $("input#registerusername").val();
+                    data['password'] = $("input#registerpassword").val();
+                    data['confirmpassword'] = $("input#registerconfirmpassword").val();
+
+                    /* $.getJSON('validateregistration.php', data, function(jd){
+                        isvalid = jd.isvalid;
                         if(!jd.isvalid){
                             $("#error").html(jd.errormessage);
                             $("#error").show();
                             $("#error").effect("shake", {times:1}, 100);
                             return false;
-                        } else {
-                            $("#error").hide();
                         }
-                    });
+                   }); */
+
+                   $.ajax({
+                       url: 'validateregistration.php',
+                       dataType: 'json',
+                       data: data,
+                       async: false,
+                       success: function(jd){
+                            isvalid = jd.isvalid;
+                            if(!jd.isvalid){
+                                $("#error").html(jd.errormessage);
+                                $("#error").show();
+                                $("#error").effect("shake", {times:1}, 100);
+                                return false;
+                            } else {
+                                isvalid = true;
+                                return true;
+                            }
+                       }
+                   }); 
                     
-                    $("#registerform").submit();
-                    // return isvalid;
+                    if (isvalid){
+                        $("#registerform").submit();
+                    } else {
+                        return false;
+                    }
                 });
             });
 
         </script>
 
 <?php
-include("cfatfooter.php");
+    include("cfatfooter.php");
 ?>

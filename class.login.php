@@ -239,7 +239,9 @@ class logmein {
         
         function register($username, $password, $confirm_password, $displayname){
 
-            if(!$this->is_registration_valid){
+            if(!$this->is_registration_valid($username, $password, $confirm_password)){
+                // registration failed. the client of this class should call
+                // the last_error_message method on this class.
                 return false;
             }
 
@@ -253,9 +255,6 @@ class logmein {
 
             try{
                 //execute registration via qry function that prevents MySQL injections
-                // TODO: check that username is a valid email address
-                // TODO: check that email address isn't already registered
-                // TODO: check that displayname isn't duplicated and concatenate an incremental number if so
                 $result = $this->qry("INSERT INTO ".$this->user_table." (useremail, password, displayname) VALUES('?','?','?')", $username, $password, $displayname);
             } catch (Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
