@@ -61,8 +61,14 @@ section h1 {
 	color: white;
 	font-size: 15pt;
 	text-shadow: 1px 1px 0px #000;
-
 }
+
+.errmessage {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../images/error.png');
+}
+
 
 /* Links */
 a {
@@ -92,7 +98,6 @@ nav {
 }
 
 .bluenavleft {
-    float: left;
     height: 30px;
     font-size: 12pt;
     background-color: #c0c0c0;
@@ -103,12 +108,11 @@ nav {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background-image: none;
-    width: 75%;
+    width: 80%;
     text-align: center;
 }
 
 .bluenavright {
-    float: right;
     height: 30px;
     font-size: 12pt;
     background-color: #c0c0c0;
@@ -119,8 +123,68 @@ nav {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background-image: none;
-    width: 75%;
+    width: 80%;
     text-align: center;
+}
+
+.blacknavleft {
+    float: inherit;
+    height: 30px;
+    font-size: 12pt;
+    background-color: #c0c0c0;
+    color: black;
+    padding: 10px;
+    white-space: nowrap;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-image: none;
+    width: 80%;
+    text-align: center;
+}
+
+nav.blacknavleft {
+    
+    height: 30px;
+    font-size: 12pt;
+    background-color: #c0c0c0;
+    color: black;
+    padding: 10px;
+    white-space: nowrap;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-image: none;
+    width: 80%;
+    text-align: center;
+}
+
+.bluebold {
+    float: center;
+    height: 30px;
+    font-size: 14pt;
+    font: bolder;
+    color: #06c;
+    padding: 10px;
+    white-space: nowrap;
+     -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-image: none;
+    text-align: center;
+}
+
+.footnote {
+    /* height: 100px;*/
+    font-size: 8pt;
+    color: #000000;
+    padding: 10px;
+     -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-image: none;
+    text-align: left;
+    vertical-align: bottom;
 }
 
 nav ul {
@@ -138,7 +202,7 @@ nav ul li a {
 	padding: 0 5px;
 	font-weight: bold;
 	color: black;
-	text-shadow: 1px 1px 0px #fff;
+	/* text-shadow: 1px 1px 0px #fff; */
 }
 
 nav ul li a:visited {
@@ -176,6 +240,10 @@ a.signup_button {
           border-bottom-right-radius:10px 10px;
           border-top-left-radius:10px 10px;
           border-top-right-radius:10px 10px;
+}
+
+.footnote {
+
 }
 
 /* Footer */
@@ -288,3 +356,32 @@ form label, form input, form textarea {
   padding-right: 15px;
   padding-left: 15px; }
 
+.info, .success, .warning, .error, .validation {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('info.png');
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('success.png');
+}
+.error{
+    /* visibility: hidden; */
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../images/error.png');
+}
+
+.validation {
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('validation.png');
+}

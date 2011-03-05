@@ -14,7 +14,7 @@ $json_result = "";
 
 if (isset($_GET['email'])){
     $email = $_GET['email'];
-    $json_result = json_encode($log->isemailtaken($email));
+    $json_result = json_encode($log->is_email_taken($email));
 }else{
     $json_result(false);
     exit;

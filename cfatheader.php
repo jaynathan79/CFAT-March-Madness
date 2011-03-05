@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 <head>
   <title>Hoops for Hunger by Change for a 10</title>
@@ -35,17 +38,29 @@
 	<div class="container">
 		<header>
 			<img src="images/cfattemplogo.png" border="0">
-			<nav class="round login">
-				<ul>
-					<li><a href="/">Login</a></li>
-				</ul>
-			</nav>
+                        <?php
+                        
+                            if(empty($_SESSION['loggedin'])) {
+                                echo "<nav class='round login'>";
+                                echo "  <ul>";
+                                echo "      <li><a href='/'>Login</a></li>";
+                                echo "  </ul>";
+                                echo "</nav>";
+                            } else {
+                                echo "<nav class='round login'>";
+                                echo "  <ul>";
+                                echo "      <li><a href='/'>Logout</a></li>";
+                                echo "  </ul>";
+                                echo "</nav>";
+                            }
+                        ?>
 			<nav class="round">
 				<ul>
 					<li><a href="/">Home</a></li>
 					<li><a href="/">Blog</a></li>
 				</ul>
 			</nav>
+                        
 			
 		</header>
 		
