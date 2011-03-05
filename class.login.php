@@ -289,12 +289,10 @@ class logmein {
                 return false;
             };
 
-            /*
             if(!$this->is_valid_email_address($username)) {
                 $this->last_error_message = "Email address is invalid. Please enter a valid email address.";
                 return false;
             };
-             */
 
             if($this->is_email_taken(trim($username))) {
                 $this->last_error_message = "This email address is already in use. Please use another one.";

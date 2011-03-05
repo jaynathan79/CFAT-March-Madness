@@ -12,7 +12,7 @@ include("cfatheader.php");
                             <div id="error" class="error">
                                 There was a problem with your registration.
                             </div>
-                            <form action='registrationcontroller.php' id='registerform' onsubmit='return false;' method='post' name='tryit'>
+                            <form action='registrationcontroller.php' id='registerform' onsubmit="return false;" method='post' name='tryit'>
                                 <input name="action" id="action" value="register" type="hidden"/>
                             <table>
                                 <tr>
@@ -86,7 +86,7 @@ include("cfatheader.php");
             $(document).ready(function(){
                 $("#error").hide();
 
-                $('#registerform').submit(function(event){
+                $('#submit').click(function(event){
                     var username = $("input#registerusername").val();
                     var password = $("input#registerpassword").val();
                     var confirmpassword = $("input#registerconfirmpassword").val();
@@ -100,10 +100,10 @@ include("cfatheader.php");
                             $("#error").html(jd.errormessage);
                             $("#error").show();
                             $("#error").effect("shake", {times:1}, 100);
-                        } else {
-                            document.forms['registerform'].submit();
+                            // isvalid = false;
                         }
                     });
+                    // return isvalid;
                 });
             });
 
