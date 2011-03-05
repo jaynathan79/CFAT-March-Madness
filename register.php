@@ -100,9 +100,13 @@ include("cfatheader.php");
                             $("#error").html(jd.errormessage);
                             $("#error").show();
                             $("#error").effect("shake", {times:1}, 100);
-                            // isvalid = false;
+                            return false;
+                        } else {
+                            $("#error").hide();
                         }
                     });
+                    
+                    $("#registerform").submit();
                     // return isvalid;
                 });
             });
