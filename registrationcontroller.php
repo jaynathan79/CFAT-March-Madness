@@ -2,7 +2,6 @@
 date_default_timezone_set('America/Los_Angeles');
 include("class.login.php");
 
-
 $log = new logmein();
 $log->encrypt = true;
 
@@ -12,6 +11,13 @@ if($_REQUEST['action'] == "login"){
         // assuming login request is successful, redirect to game page
         echo ($_SESSION["userid"]."<br/>");
         echo ($_SESSION["loggedin"]."<br/>");
+        /*
+        $_SESSION['userid'] = $userid;
+            $_SESSION['loggedin'] = true;
+            $_SESSION['useremail'] = $username;
+            $_SESSION['ispaid'] = false;
+         * */
+
 
         echo ("Login succeeded.");
     }else{
@@ -35,6 +41,8 @@ if ($_REQUEST['action'] == 'register'){
             session_start();
             $_SESSION['userid'] = $userid;
             $_SESSION['loggedin'] = true;
+            $_SESSION['useremail'] = $username;
+            $_SESSION['ispaid'] = false;
 
             // registration and login were successful, redirect to welcome page
             header('Location: welcome.php');

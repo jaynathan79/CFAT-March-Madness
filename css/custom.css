@@ -3,9 +3,15 @@
 	margin:0 auto;
 }
 
+header .logo {
+    width: 95%;
+    float: left;
+    margin: 0 auto;
+}
+
 body {
 	background: #c0c0c0;
-	background-image:url('../images/topbackground.jpg');
+	background-image:url('../images/topbackground_newlogo.jpg');
 	background-repeat:repeat-x;	
 	font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
 }
@@ -56,7 +62,22 @@ section h1 {
 	background: none;
 	border: none;
 	background-image:url('../images/BlueButton_Take5.png');
+        /* background-image:url('../images/bluebutton.gif'); */
+        background-repeat: no-repeat;
 	width: 210px;
+	height: 50px;
+	color: white;
+	font-size: 15pt;
+	text-shadow: 1px 1px 0px #000;
+}
+
+.btn_donate {
+	background: none;
+	border: none;
+	/* background-image:url('../images/BlueButton_Take5.png'); */
+        background-image:url('../images/BlueDonateButton.png');
+        background-repeat: no-repeat;
+	width: 300px;
 	height: 50px;
 	color: white;
 	font-size: 15pt;
@@ -357,7 +378,7 @@ form label, form input, form textarea {
   padding-right: 15px;
   padding-left: 15px; }
 
-.info, .success, .warning, .error, .validation {
+.info, .valid, .warning, .error, .validation {
     border: 1px solid;
     margin: 10px 0px;
     padding:15px 10px 15px 50px;
@@ -369,10 +390,10 @@ form label, form input, form textarea {
     background-color: #BDE5F8;
     background-image: url('info.png');
 }
-.success {
+.valid {
     color: #4F8A10;
     background-color: #DFF2BF;
-    background-image:url('success.png');
+    background-image:url('../images/valid.png');
 }
 .error{
     /* visibility: hidden; */

@@ -17,18 +17,19 @@
                             <table>
                                 <tr>
                                     <td colspan="2">
-                                        <label for='email'>Email</label><br/>
+                                        <!-- label for='email'>Email</label-->
+                                        <div style="font-size: 12pt">Email</div>
                                         <input class='required big two-column' id='registerusername' name='registerusername' type='email' value='' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for='password'>Password</label><br/>
+                                        <div style="font-size: 12pt">Password</div>
                                         <input class='required big one-column' id='registerpassword' name='registerpassword' type='password' value='' />
                                     </td>
                                     <td>
-                                        <label for='password_confirm' id='confirm'>Confirm Password</label>
-                                        <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' />
+                                        <div style="font-size: 12pt">Confirm Password</div>
+                                        <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' value='' />
                                     </td>
                                 </tr>
                                 <tr>
@@ -40,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Signup' />
+                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Create Account' />
                                         <br/>
                                         <br/>
                                     </td>
@@ -51,7 +52,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <p>
-                                            By clicking this button, you agree to the <a href="/legal/terms" target="_blank">Privacy Policy &amp; Terms of Use</a>
+                                            By clicking this button you acknowledge our <a href="privacy.php" target="_blank">Privacy Policy</a>
                                         </p>
                                     </td>
                                 </tr>
@@ -64,27 +65,14 @@
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
                         <div class="in15">
-                            <div style="font-size: 14pt">Join us now!</div>
+                            <div style="font-size: 14pt">This month's event:</div>
                             <p style="font-size: 10pt">
-                                What can a $10 donation from one person really accomplish? What difference will adding 10 of your friends really have?
+                                <img src="images/HoopsToFightHunger_SignInPa.jpg" alt="Hoops to Fight Hunger, 2011"/>
                             </p>
-                            <p style="font-size: 10pt">
-                                How quickly can one nonprofit attract a network of passionate supporters so large that it can do big things through small donations?
+                            <p>
+                                Pick all 63 games correctly and we’ll donate an additional $10,000 to the hunger-related charity of your choice!
                             </p>
-
-                            <div style="font-size: 14pt">Inaugural “Hoops to Fight Hunger” Event</div>
-                            <p style="font-size: 10pt; ">
-                                Change for a 10 is about much more than a basketball pool to raise money for hunger-related nonprofits.
-                            </p>
-                            <p style="font-size: 10pt; ">
-                                Before we have our “big launch” later this year, we wanted to have a little fun with “March Madness”.
-                                <br/><br/>
-Let's see how many people we can get to join a pool where you donate $10 to fight hunger as opposed to paying $10 for an office pool.
-                            </p>
-
-                            <h3 class='top10'>
-                                <a href='/learnmore' title='Learn More'>Learn More</a>
-                            </h3>
+                            
                         </div>
                     </div>
                 </td>
@@ -93,22 +81,10 @@ Let's see how many people we can get to join a pool where you donate $10 to figh
 
         <script type="text/javascript" language="javascript">
 
-            function stopEvent(e) {
-                if (e.stopPropagation) e.stopPropagation();
-                else e.cancelBubble = true;
-
-                if (e.preventDefault) e.preventDefault();
-                else e.returnValue = false;
-            }
-
             $(document).ready(function(){
                 $("#error").hide();
 
-                // $('#registerform').submit(function(event){
                 $('#submit').click(function(event){
-                    /*if(event.originalEvent.originalEventTarget.id == "submit"){
-                        if()
-                    }*/
                 
                     var isvalid = false;
 
@@ -147,8 +123,10 @@ Let's see how many people we can get to join a pool where you donate $10 to figh
                    }); 
                     
                     if (isvalid){
+                        // submit form once everything is confirmed valid from the server.
                         $("#registerform").submit();
                     } else {
+                        // don't submit form unless everything is valid
                         return false;
                     }
                 });

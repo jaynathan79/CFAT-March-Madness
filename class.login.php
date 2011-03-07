@@ -1,6 +1,7 @@
 <?php
 
 include("admin/database.php");
+include("class.payment.php");
 //start session
 session_start();
 
@@ -19,9 +20,7 @@ class logmein {
 	var $user_column = 'useremail';		//USERNAME column (value MUST be valid email)
 	var $pass_column = 'password';		//PASSWORD column
 	var $user_level = 'userlevel';		//(optional) userlevel column
-
-        // global error messages
-        var $last_error_message = "";
+        public $last_error_message = "";
 
 	//encryption
 	var $encrypt = false;		//set to true to use md5 encryption for the password
@@ -60,8 +59,22 @@ class logmein {
 		}else{
 			return -1;
 		}
-
 	}
+
+        function save_user_charity($userid, $charity){
+            $this->dbconnect();
+
+            try{
+                //execute registration via qry function that prevents MySQL injections
+                $result = $this->qry("UPDATE users SET supportedcharity = '?' WHERE userid = ?", $charity, $userid);
+                return true;
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                return false;
+            }
+
+            return true;
+        }
 
         //prevent injection
         function qry($query) {
@@ -304,6 +317,22 @@ class logmein {
             };
 
             return true;
+        }
+
+        function update_registration_with_payment_info($pmt){
+            $this->dbconnect();
+
+            $sql = "UPDATE users SET paid = 1, address_state = '?', payment_gross = '?', first_name = '?', last_name = '?' WHERE userid = '?'";
+
+            try{
+                //execute registration via qry function that prevents MySQL injections
+                $result = $this->qry($sql, $pmt->address_state, $pmt->payment_gross, $pmt->first_name, $pmt->last_name, $pmt->userid);
+            } catch (Exception $e) {
+                $err = "Caught exception: ".$e->getMessage();
+                $this->last_error_message = $err;
+                echo $err;
+                return false;
+            }
         }
 
          function is_email_taken($email){

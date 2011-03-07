@@ -836,7 +836,7 @@ form label {
   margin-bottom: 3px; }
 form input[type=submit] {
   cursor: pointer; }
-form input[type=text], form input[type=email], form input[type=password] {
+form input[type=text], form input[type=email], form input[type=password], form input[type=select] {
   padding: 5px 10px;
   border: 1px solid #ddd;
   border-top: 1px solid #ccc;
@@ -846,9 +846,9 @@ form input[type=text], form input[type=email], form input[type=password] {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
-  form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus {
+  form input[type=text]:focus, form input[type=email]:focus, form input[type=password]:focus, form input[type=select]:focus {
     border: 1px solid #ccc; }
-  form input[type=text].big, form input[type=email].big, form input[type=password].big {
+  form input[type=text].big, form input[type=email].big, form input[type=password].big, form input[type=select].big {
     font-size: 20px;
     font-weight: normal;
     background: none;
@@ -865,12 +865,12 @@ form input[type=text], form input[type=email], form input[type=password] {
     background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% 15px no-repeat; }
   form input[type=text].invalid, form input[type=email].invalid, form input[type=password].invalid {
     background: #fafafa url(http://static.mailchimp.com/www/images/form-sprites.png) 95% -77px no-repeat; }
-  form input[type=text].two-column, form input[type=email].two-column, form input[type=password].two-column {
+  form input[type=text].two-column, form input[type=email].two-column, form input[type=password].two-column, form select.two-column {
     width: 430px;
     padding-left: 16px; }
-    form input[type=text].two-column.in-inset, form input[type=email].two-column.in-inset, form input[type=password].two-column.in-inset {
+    form input[type=text].two-column.in-inset, form input[type=email].two-column.in-inset, form input[type=password].two-column.in-inset, form select[type=password].two-column.in-inset {
       width: 404px; }
-  form input[type=text].one-column, form input[type=email].one-column, form input[type=password].one-column {
+  form input[type=text].one-column, form input[type=email].one-column, form input[type=password].one-column, form input[type=select].one-column {
     width: 190px;
     padding-left: 16px; }
 form input[type=password].valid {

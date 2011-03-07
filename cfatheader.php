@@ -1,7 +1,15 @@
-<!DOCTYPE html>
 <?php
 session_start();
+
+// these variables should be available to every page which includes cfatheader
+$userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
+$useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
+$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
+
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
   <title>Hoops for Hunger by Change for a 10</title>
@@ -31,16 +39,15 @@ session_start();
 			$( "#repeat" ).buttonset();
 		});
 	</script>
-	
-	
 </head>
 <body>
 	<div class="container">
 		<header>
-			<img src="images/cfattemplogo.png" border="0">
+                    <a href="/">
+                           <img src="images/cfattemplogo.png" border="0">
+                    </a>
                         <?php
-                        
-                            if(empty($_SESSION['loggedin'])) {
+                            if($userid == "") {
                                 echo "<nav class='round login'>";
                                 echo "  <ul>";
                                 echo "      <li><a href='/'>Login</a></li>";
@@ -49,18 +56,11 @@ session_start();
                             } else {
                                 echo "<nav class='round login'>";
                                 echo "  <ul>";
-                                echo "      <li><a href='/'>Logout</a></li>";
+                                echo "      <li><a href='./logout.php'>Logout</a></li>";
                                 echo "  </ul>";
                                 echo "</nav>";
                             }
                         ?>
-			<nav class="round">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/">Blog</a></li>
-				</ul>
-			</nav>
-                        
 			
 		</header>
 		
