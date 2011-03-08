@@ -20,26 +20,15 @@ function clearStatus()
 
 </script>
 
-<style type="text/css">
-.content
-{
-	width:1110px;
-}
 
-#main
-{
-	width:1106px;
-}
-</style>
 
 <link rel="stylesheet" media="print" href="images/print.css" type="text/css" />
- <div id="main"> 
-  <div class="full"> 
-     <div id="bracketheader">
+ 
+  
      <?php
      	echo stripslashes($picks['name']);
 	?>
-		  <table border="0" width="100%">
+		  <table class="bracketview">
 		 	<tr>
 				<?php if( $rank != "" ) { ?> <td>Rank: <?php echo $rank ?></td><?php } ?>
 				<?php if( $best_data['score'] != "" ) { ?> <td>Best Score Possible: <?php echo $best_data['score'] ?></td><?php } ?>
@@ -49,11 +38,10 @@ function clearStatus()
 				<?php if( $best_data['score'] != "") { ?><td>Possible Points Remaining: <?php echo $best_data['score']- $score_data['score'] ?></td><?php } ?>
 			</tr>
 		 </table>
-	 </div>
+	
 	 <div id="printlink"><h3><a href="#" onclick="window.print();">Printable Version</a></h3></div>
      
-     <div name="bracket" class="bracket" id="bracket">
-      <table width="1100" border="1" cellspacing="0" cellpadding="0" > 
+      <table class="bracketview" > 
          <tr> 
           <td width="100"><?php echo $meta['region1']; ?></td>
           <td width="100">Round 2</td>
@@ -274,13 +262,9 @@ function clearStatus()
           <td width="100" align="right"><?php echo $meta['region4']; ?> </td> 
         </tr> 
        </table> 
-    </div> 
-   </div> 
-</div> 
 
 
 <?php
-
 }
 
 ?>

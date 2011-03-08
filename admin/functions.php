@@ -3,6 +3,7 @@ session_start();
 
 function validatecookie()
 {	
+	/*
 	if( !isset($_SESSION['admin']) )
 	{
 		header("Location: ../login.html"); 
@@ -11,6 +12,7 @@ function validatecookie()
 	{
 		header("Location: ../login.html"); 
 	}
+	*/
 }
 
 function getScoringArray($db, $type)

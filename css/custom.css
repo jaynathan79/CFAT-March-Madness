@@ -183,6 +183,43 @@ nav {
 	
 }
 
+nav.tourney {
+	float:left;
+}
+
+table.scores {
+	border: 1px;
+	width: 300px;
+	border-color: #000000;
+}
+
+table.bracketview {
+	border: 1px;
+	border-color: #000000;
+	width: 100%;
+}
+
+.forms {
+	width: 150px;
+}
+
+table.bracketview td{
+	border: 1px;
+	border-color: #000000;
+}
+
+table.bracketentry {
+	border: 1px;
+	border-color: #000000;
+	width: 100%;
+}
+
+table.bracketentry td{
+	border: 1px;
+	border-color: #000000;
+	width: 200px;
+}
+
 .bluenavleft {
     height: 30px;
     font-size: 12pt;

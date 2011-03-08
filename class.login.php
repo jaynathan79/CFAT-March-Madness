@@ -1,32 +1,34 @@
 <?php
-
 include("admin/database.php");
 include("class.payment.php");
 //start session
 session_start();
 
-
 class logmein {
 
-	//database setup
-       //MAKE SURE TO FILL IN DATABASE INFO
+	// var $hostname_logon = "localhost:8888";
+	// 				var $database_logon = "tourney";
+	// 				var $username_logon = "root";		//Database USERNAME
+	// 				var $password_logon = "root";		//Database PASSWORD
+	
 	var $hostname_logon = "localhost";		//Database server LOCATION
-	var $database_logon = "ncaa";		//Database NAME
-	var $username_logon = "root";		//Database USERNAME
-	var $password_logon = "admin";		//Database PASSWORD
-
+					var $database_logon = "ncaa";		//Database NAME
+					var $username_logon = "root";		//Database USERNAME
+					var $password_logon = "admin";		//Database PASSWORD
+	
 	//table fields
 	var $user_table = 'users';		//Users table name
 	var $user_column = 'useremail';		//USERNAME column (value MUST be valid email)
 	var $pass_column = 'password';		//PASSWORD column
 	var $user_level = 'userlevel';		//(optional) userlevel column
-        public $last_error_message = "";
+    public $last_error_message = "";
 
 	//encryption
 	var $encrypt = false;		//set to true to use md5 encryption for the password
 
 	//connect to database
-	function dbconnect(){
+	function dbconnect()
+	{
             $connections = mysql_connect($this->hostname_logon, $this->username_logon, $this->password_logon) or die ('Unabale to connect to the database');
             mysql_select_db($this->database_logon) or die ('Unable to select database!');
             return;

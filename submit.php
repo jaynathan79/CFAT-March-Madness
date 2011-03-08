@@ -1,5 +1,6 @@
 <?php
-include("header.php");
+include("cfatheader.php");
+include("menu.php");
 
 $email = "SELECT email FROM `meta` WHERE `id`=1";
 
@@ -86,7 +87,7 @@ function validateFields( alertText )
 
 	</script>
 	
-	<div id="main">
+	
 		<div class="full">
 			<h2>The Bracket</h2>
 			<h3>&nbsp;</h3>
@@ -108,12 +109,12 @@ function validateFields( alertText )
 				<?php } ?>
 <p>
 If you want a hard copy of your bracket before the tournament begins, please PRINT your bracket before submitting it.</p>
-				<table width="700" border="1">
+				<table class="bracketentry">
 					<tr>
-						<td colspan="5"><h1><?php echo $meta['region1']?></h1></td>
+						<td colspan="5" class="region"><h1><?php echo $meta['region1']?></h1></td>
 					</tr>
 					<tr>
-						<td>1. <?php echo $teams['1']?></td>
+						<td class="team1">1. <?php echo $teams['1']?></td>
 						<td rowspan="2"><select name="game1" size="2" class="forms" id="game1" onchange="update('game1','game33',0);">
 								<option value="<?php echo $teams[1]?>"><?php echo $teamNames['1']?></option>
 								<option value="<?php echo $teams[2]?>"><?php echo $teamNames['2']?></option>
@@ -126,7 +127,7 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 																		</select></td>
 					</tr>
 					<tr>
-						<td>16. <?php echo $teams['2']?></td>
+						<td class="team2">16. <?php echo $teams['2']?></td>
 					</tr>
 					<tr>
 						<td>8. <?php echo $teams['3']?></td>
@@ -543,8 +544,7 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 				</p>
 			</form>
 		</div>
-	</div>
-	<div id="footer"> </div>
-</div>
-</body>
-</html>
+	
+<?php
+	include("cfatfooter.php");
+?>

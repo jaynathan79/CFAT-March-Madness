@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('America/Los_Angeles');
+//date_default_timezone_set('America/Los_Angeles');
 include("class.login.php");
 
 $log = new logmein();
@@ -7,23 +7,27 @@ $log->encrypt = true;
 
 if($_REQUEST['action'] == "login"){
     // do login
-    if($log->login("logon", $_REQUEST['username'], $_REQUEST['password']) == true){
-        // assuming login request is successful, redirect to game page
-        echo ($_SESSION["userid"]."<br/>");
-        echo ($_SESSION["loggedin"]."<br/>");
-        /*
+	$userid = $log->login($_REQUEST['username'], $_REQUEST['password']);
+    if($userid > -1){
+        session_start();
         $_SESSION['userid'] = $userid;
-            $_SESSION['loggedin'] = true;
-            $_SESSION['useremail'] = $username;
-            $_SESSION['ispaid'] = false;
-         * */
+        $_SESSION['loggedin'] = true;
+        $_SESSION['useremail'] = $_REQUEST['username'];
+        $_SESSION['ispaid'] = false;
 
-
-        echo ("Login succeeded.");
-    }else{
-        // redirect back to login page
-        header('Location: login.php?result=loginfailed');
+        // registration and login were successful, redirect to welcome page
+        header('Location: welcome.php');
+        //echo "<script>window.location.href='welcome.php';</script>";
+    } else {
+        echo "login failed.";
+        session_destroy();
     }    
+}
+
+if($_REQUEST['action'] == "logout"){
+    // do login
+	session_destroy();
+	header('Location: login.php');
 }
 
 if ($_REQUEST['action'] == 'register'){
@@ -63,8 +67,5 @@ if ($_REQUEST['action'] == 'register'){
         //       match and are complex enough.
     }
 }
-
-
-
 
 ?>

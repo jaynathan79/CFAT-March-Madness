@@ -1,4 +1,5 @@
 <?php
+include("admin/database.php");
 session_start();
 
 // these variables should be available to every page which includes cfatheader
@@ -41,6 +42,19 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 			$( "#repeat" ).buttonset();
 		});
 	</script>
+	
+	<!-- from tourney header -->
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/emailall.js"></script>
+	<?php
+	//if this is the submit or what-if page, include the necessary javascript
+	if(strpos($_SERVER['PHP_SELF'],"submit.php") !== FALSE || strpos($_SERVER['PHP_SELF'],"whatif.php") !== FALSE) {
+	?>
+	<script type="text/javascript" src="js/submitwhatif.js"/>
+	<?php } ?>
+	<!-- end from tourney header -->
+	
+	
 </head>
 <body>
         <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 10;">
@@ -48,14 +62,14 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
             <div class="header">
 
                  <?php
-                    if($userid == "") {
+                    if($loggedin == false) {
                         echo "<a href='./login.php' id='login' class='login'>Log In</a>";
                     } else {
-                        echo "<a href='./logout.php' id='login' class='login'>Log Out</a>";
+                        echo "<div style='float:right'>Logged in as ".$useremail."(<a href='./logout.php' id='login' class='login'>Log Out</a>)</div>";
                     }
                 ?>
             </div>
-                       
+		</header>
 		
 		<section class="round content">
 			<div id="padded">
