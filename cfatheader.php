@@ -15,8 +15,10 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
   <title>Hoops for Hunger by Change for a 10</title>
 <link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
-
-	<!-- wijmo -->
+<link  href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+<link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+<link  href="http://fonts.googleapis.com/css?family=Arimo:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
+<!-- wijmo -->
 	<meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="http://cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
@@ -41,29 +43,21 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	</script>
 </head>
 <body>
-	<div class="container">
-		<header>
-                    <a href="/">
-                           <img src="images/cfattemplogo.png" border="0">
-                    </a>
-                        <?php
-                            if($userid == "") {
-                                echo "<nav class='round login'>";
-                                echo "  <ul>";
-                                echo "      <li><a href='/'>Login</a></li>";
-                                echo "  </ul>";
-                                echo "</nav>";
-                            } else {
-                                echo "<nav class='round login'>";
-                                echo "  <ul>";
-                                echo "      <li><a href='./logout.php'>Logout</a></li>";
-                                echo "  </ul>";
-                                echo "</nav>";
-                            }
-                        ?>
-			
-		</header>
+        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 10;">
+        <div class="container">
+            <div class="header">
+
+                 <?php
+                    if($userid == "") {
+                        echo "<a href='./login.php' id='login' class='login'>Log In</a>";
+                    } else {
+                        echo "<a href='./logout.php' id='login' class='login'>Log Out</a>";
+                    }
+                ?>
+            </div>
+                       
 		
 		<section class="round content">
 			<div id="padded">
+                            
 		<!-- end header -->
