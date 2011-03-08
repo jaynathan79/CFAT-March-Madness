@@ -60,6 +60,7 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 			<a href="/">
 				<img src="images/cfattemplogo.png" border="0">
 			</a>
+			
             <nav class='round login'>
 	  			<ul>
 				<?php
@@ -71,6 +72,13 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	                     ?>
 				<ul>
 			</nav>
+			
+			<?php
+				if($loggedin == true)
+				{
+					echo "<div style='float:right'>Logged in as ".$useremail."<div>";
+				}
+			?>
 		</header>
 		
 		<section class="round content">

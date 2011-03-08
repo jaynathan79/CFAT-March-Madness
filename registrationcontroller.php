@@ -12,7 +12,7 @@ if($_REQUEST['action'] == "login"){
         session_start();
         $_SESSION['userid'] = $userid;
         $_SESSION['loggedin'] = true;
-        $_SESSION['useremail'] = $username;
+        $_SESSION['useremail'] = $_REQUEST['username'];
         $_SESSION['ispaid'] = false;
 
         // registration and login were successful, redirect to welcome page
