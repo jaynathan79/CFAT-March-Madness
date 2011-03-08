@@ -59,16 +59,15 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 <body>
         <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 10;">
         <div class="container">
-            <div class="header">
+            <header>
 
                  <?php
                     if($loggedin == false) {
                         echo "<a href='./login.php' id='login' class='login'>Log In</a>";
                     } else {
-                        echo "<div style='float:right'>Logged in as ".$useremail."(<a href='./logout.php' id='login' class='login'>Log Out</a>)</div>";
+                        echo "<span id='login'>Logged in as ".$useremail." <a href='./logout.php' id='login'>(log out)</a><span>";
                     }
                 ?>
-            </div>
 		</header>
 		
 		<section class="round content">

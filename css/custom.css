@@ -28,6 +28,13 @@ label {
         color: #ffffff;
 }
 
+header {
+	padding: 25px;
+        vertical-align: middle;
+        color: #ffffff;
+}
+
+
 header img {
 	/*padding: 1em;*/
 	/*background: #fff;*/
