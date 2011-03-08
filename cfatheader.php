@@ -1,7 +1,5 @@
 <?php
 include("admin/database.php");
-?>
-<?php
 session_start();
 
 // these variables should be available to every page which includes cfatheader
@@ -59,18 +57,20 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 <body>
 	<div class="container">
 		<header>
-			<img src="images/cfattemplogo.png" border="0">
-                    <nav class='round login'>
-	    				<ul>
-						<?php
-                            f($userid == "") {
-                                echo "      <li><a href='login.php'>Login</a></li>";
-                            } else {
-                                echo "      <li><a href='login.php'>Logout</a></li>";
-                            }
-                        ?>
-						<ul>
-					</nav>
+			<a href="/">
+				<img src="images/cfattemplogo.png" border="0">
+			</a>
+            <nav class='round login'>
+	  			<ul>
+				<?php
+	                         if($userid == "") {
+	                             echo "      <li><a href='login.php'>Login</a></li>";
+	                         } else {
+	                             echo "      <li><a href='login.php'>Logout</a></li>";
+	                         }
+	                     ?>
+				<ul>
+			</nav>
 		</header>
 		
 		<section class="round content">
