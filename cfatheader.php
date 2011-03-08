@@ -66,7 +66,7 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	                         if($userid == "") {
 	                             echo "      <li><a href='login.php'>Login</a></li>";
 	                         } else {
-	                             echo "      <li><a href='login.php'>Logout</a></li>";
+	                             echo "      <li><a href='registrationcontroller.php?action=logout'>Logout</a></li>";
 	                         }
 	                     ?>
 				<ul>

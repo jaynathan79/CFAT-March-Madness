@@ -24,6 +24,12 @@ if($_REQUEST['action'] == "login"){
     }    
 }
 
+if($_REQUEST['action'] == "logout"){
+    // do login
+	session_destroy();
+	header('Location: login.php');
+}
+
 if ($_REQUEST['action'] == 'register'){
 
     $displayname = substr($_REQUEST['registerusername'], 0, strrpos($_REQUEST['registerusername'], "@"));
