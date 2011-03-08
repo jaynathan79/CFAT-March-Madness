@@ -6,15 +6,15 @@ session_start();
 
 class logmein {
 
-	// var $hostname_logon = "localhost:8888";
-	// 				var $database_logon = "tourney";
-	// 				var $username_logon = "root";		//Database USERNAME
-	// 				var $password_logon = "root";		//Database PASSWORD
+	var $hostname_logon = "localhost:8888";
+						var $database_logon = "tourney";
+						var $username_logon = "root";		//Database USERNAME
+						var $password_logon = "root";		//Database PASSWORD
 	
-	var $hostname_logon = "localhost";		//Database server LOCATION
-					var $database_logon = "ncaa";		//Database NAME
-					var $username_logon = "root";		//Database USERNAME
-					var $password_logon = "admin";		//Database PASSWORD
+	// var $hostname_logon = "localhost";		//Database server LOCATION
+	// 					var $database_logon = "ncaa";		//Database NAME
+	// 					var $username_logon = "root";		//Database USERNAME
+	// 					var $password_logon = "admin";		//Database PASSWORD
 	
 	//table fields
 	var $user_table = 'users';		//Users table name

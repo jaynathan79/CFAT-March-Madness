@@ -1,7 +1,7 @@
 <div>
 	<nav class="tourney">
 	  	<ul>
-			<li><a href="home.php">HOME</a></li>
+			<li><a href="index.php">HOME</a></li>
 			<li><a href="submit.php">CREATE BRACKET</a></li>
 			<li><a href="rules.php">RULES</a></li>
 			<li><a href="choose.php">STANDINGS</a></li>

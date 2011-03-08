@@ -64,7 +64,7 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
             <nav class='round login'>
 	  			<ul>
 				<?php
-	                         if($userid == "") {
+	                         if($loggedin == false) {
 	                             echo "      <li><a href='login.php'>Login</a></li>";
 	                         } else {
 	                             echo "      <li><a href='registrationcontroller.php?action=logout'>Logout</a></li>";

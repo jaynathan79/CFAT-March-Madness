@@ -2,14 +2,13 @@
 
 include("admin/database.php");
 include("admin/functions.php");
-
+include("bracket_functions.php");
 
 session_start();
-$query = "SELECT closed FROM `meta` WHERE `id`=1";
-$meta = mysql_query($query,$db);
-$meta = mysql_fetch_array($meta);
 
-if($meta['closed'] == 0) {
+$closed = isClosedToSubmissions();
+
+if($closed == false) {
 	$_SESSION['errors'] = "No peeking until submission is closed!";
 	header('Location:index.php');
 	exit();
