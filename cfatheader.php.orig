@@ -1,17 +1,28 @@
+<<<<<<< HEAD
+<?php
+include("admin/database.php");
+?>
+<!DOCTYPE html>
+=======
+>>>>>>> e0ac8394c01cbd75af4306a7cdc5dee4d575697a
+<?php
+session_start();
+
+// these variables should be available to every page which includes cfatheader
+$userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
+$useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
+$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
   <title>Hoops for Hunger by Change for a 10</title>
 <link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
-=======
-  	<title>[TITLE]</title>
-	<!--
-	<link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
-	-->
-	<link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
-	
+
 	<!-- wijmo -->
 	<meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -35,29 +46,62 @@
 			$( "#repeat" ).buttonset();
 		});
 	</script>
+<<<<<<< HEAD
+	
+	<!-- from tourney header -->
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/emailall.js"></script>
+	<?php
+	//if this is the submit or what-if page, include the necessary javascript
+	if(strpos($_SERVER['PHP_SELF'],"submit.php") !== FALSE || strpos($_SERVER['PHP_SELF'],"whatif.php") !== FALSE) {
+	?>
+	<script type="text/javascript" src="js/submitwhatif.js"/>
+	<?php } ?>
+	<!-- end from tourney header -->
 	
 	
->>>>>>> 3a05a48be41bd168b756bc7c5d92d47fd6ec4a79
+=======
+>>>>>>> e0ac8394c01cbd75af4306a7cdc5dee4d575697a
 </head>
 <body>
 	<div class="container">
 		<header>
+<<<<<<< HEAD
 			<img src="images/cfattemplogo.png" border="0">
-			<nav class="round login">
-				<ul>
-					<li><a href="/">Login</a></li>
-				</ul>
-			</nav>	
-			<nav class="round">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/">Blog</a></li>
-				</ul>
-			</nav>
+                    <nav class='round login'>
+	    				<ul>
+						<?php
+                            if(empty($_SESSION['loggedin'])) {
+                                echo "      <li><a href='login.php'>Login</a></li>";
+                            } else {
+                                echo "      <li><a href='login.php'>Logout</a></li>";
+                            }
+                        ?>
+						<ul>
+					</nav>
+=======
+                    <a href="/">
+                           <img src="images/cfattemplogo.png" border="0">
+                    </a>
+                        <?php
+                            if($userid == "") {
+                                echo "<nav class='round login'>";
+                                echo "  <ul>";
+                                echo "      <li><a href='/'>Login</a></li>";
+                                echo "  </ul>";
+                                echo "</nav>";
+                            } else {
+                                echo "<nav class='round login'>";
+                                echo "  <ul>";
+                                echo "      <li><a href='./logout.php'>Logout</a></li>";
+                                echo "  </ul>";
+                                echo "</nav>";
+                            }
+                        ?>
 			
+>>>>>>> e0ac8394c01cbd75af4306a7cdc5dee4d575697a
 		</header>
 		
 		<section class="round content">
 			<div id="padded">
-				
 		<!-- end header -->

@@ -11,6 +11,9 @@ if($_REQUEST['action'] == "login"){
         // assuming login request is successful, redirect to game page
         echo ($_SESSION["userid"]."<br/>");
         echo ($_SESSION["loggedin"]."<br/>");
+<<<<<<< HEAD
+		echo ("Login succeeded.");
+=======
         /*
         $_SESSION['userid'] = $userid;
             $_SESSION['loggedin'] = true;
@@ -20,6 +23,7 @@ if($_REQUEST['action'] == "login"){
 
 
         echo ("Login succeeded.");
+>>>>>>> e0ac8394c01cbd75af4306a7cdc5dee4d575697a
     }else{
         // redirect back to login page
         header('Location: login.php?result=loginfailed');

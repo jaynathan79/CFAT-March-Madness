@@ -1,10 +1,18 @@
 <?php
 include("admin/database.php");
 ?>
-<!DOCTYPE html>
 <?php
 session_start();
+
+// these variables should be available to every page which includes cfatheader
+$userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
+$useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
+$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
+
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
   <title>Hoops for Hunger by Change for a 10</title>
@@ -55,7 +63,7 @@ session_start();
                     <nav class='round login'>
 	    				<ul>
 						<?php
-                            if(empty($_SESSION['loggedin'])) {
+                            f($userid == "") {
                                 echo "      <li><a href='login.php'>Login</a></li>";
                             } else {
                                 echo "      <li><a href='login.php'>Logout</a></li>";

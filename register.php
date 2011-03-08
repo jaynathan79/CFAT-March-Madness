@@ -1,5 +1,5 @@
 <?php
-include("cfatheader.php");
+    include("cfatheader.php");
 ?>
         <h1>Create Your Change for a 10 Account</h1>
 
@@ -12,23 +12,24 @@ include("cfatheader.php");
                             <div id="error" class="error">
                                 There was a problem with your registration.
                             </div>
-                            <form action='registrationcontroller.php' id='registerform' onsubmit='return false;' method='post' name='tryit'>
+                            <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
                                 <input name="action" id="action" value="register" type="hidden"/>
                             <table>
                                 <tr>
                                     <td colspan="2">
-                                        <label for='email'>Email</label><br/>
+                                        <!-- label for='email'>Email</label-->
+                                        <div style="font-size: 12pt">Email</div>
                                         <input class='required big two-column' id='registerusername' name='registerusername' type='email' value='' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for='password'>Password</label><br/>
+                                        <div style="font-size: 12pt">Password</div>
                                         <input class='required big one-column' id='registerpassword' name='registerpassword' type='password' value='' />
                                     </td>
                                     <td>
-                                        <label for='password_confirm' id='confirm'>Confirm Password</label>
-                                        <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' />
+                                        <div style="font-size: 12pt">Confirm Password</div>
+                                        <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' value='' />
                                     </td>
                                 </tr>
                                 <tr>
@@ -40,7 +41,7 @@ include("cfatheader.php");
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Join Us Now!' />
+                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Create Account' />
                                         <br/>
                                         <br/>
                                     </td>
@@ -51,7 +52,7 @@ include("cfatheader.php");
                                 <tr>
                                     <td colspan="2">
                                         <p>
-                                            By clicking this button, you agree to the <a href="/legal/terms" target="_blank">Privacy Policy &amp; Terms of Use</a>
+                                            By clicking this button you acknowledge our <a href="privacy.php" target="_blank">Privacy Policy</a>
                                         </p>
                                     </td>
                                 </tr>
@@ -64,17 +65,14 @@ include("cfatheader.php");
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
                         <div class="in15">
-                            <h2 class='top20'>Join us now!</h2>
+                            <div style="font-size: 14pt">This month's event:</div>
+                            <p style="font-size: 10pt">
+                                <img src="images/HoopsToFightHunger_SignInPa.jpg" alt="Hoops to Fight Hunger, 2011"/>
+                            </p>
                             <p>
-                                Change for a $10 is blah blah blah.
+                                Pick all 63 games correctly and we’ll donate an additional $10,000 to the hunger-related charity of your choice!
                             </p>
-                            <h3 class='top20'>Did you know?.</h3>
-                            <p class='bottom0'>
-                                Other stuff to tell them.
-                            </p>
-                            <h3 class='top20'>
-                                <a href='/learnmore' title='Learn More'>Learn More</a>
-                            </h3>
+                            
                         </div>
                     </div>
                 </td>
@@ -86,29 +84,56 @@ include("cfatheader.php");
             $(document).ready(function(){
                 $("#error").hide();
 
-                $('#registerform').submit(function(event){
-                    var username = $("input#registerusername").val();
-                    var password = $("input#registerpassword").val();
-                    var confirmpassword = $("input#registerconfirmpassword").val();
-                    var data = {};
-                    data['username'] = username;
-                    data['password'] = password;
-                    data['confirmpassword'] = confirmpassword;
+                $('#submit').click(function(event){
+                
+                    var isvalid = false;
 
-                    $.getJSON('validateregistration.php', data, function(jd){
+                    var data = {};
+                    data['username'] = $("input#registerusername").val();
+                    data['password'] = $("input#registerpassword").val();
+                    data['confirmpassword'] = $("input#registerconfirmpassword").val();
+
+                    /* $.getJSON('validateregistration.php', data, function(jd){
+                        isvalid = jd.isvalid;
                         if(!jd.isvalid){
                             $("#error").html(jd.errormessage);
                             $("#error").show();
                             $("#error").effect("shake", {times:1}, 100);
-                        } else {
-                            document.forms['registerform'].submit();
+                            return false;
                         }
-                    });
+                   }); */
+
+                   $.ajax({
+                       url: 'validateregistration.php',
+                       dataType: 'json',
+                       data: data,
+                       async: false,
+                       success: function(jd){
+                            isvalid = jd.isvalid;
+                            if(!jd.isvalid){
+                                $("#error").html(jd.errormessage);
+                                $("#error").show();
+                                $("#error").effect("shake", {times:1}, 100);
+                                return false;
+                            } else {
+                                isvalid = true;
+                                return true;
+                            }
+                       }
+                   }); 
+                    
+                    if (isvalid){
+                        // submit form once everything is confirmed valid from the server.
+                        $("#registerform").submit();
+                    } else {
+                        // don't submit form unless everything is valid
+                        return false;
+                    }
                 });
             });
 
         </script>
 
 <?php
-include("cfatfooter.php");
+    include("cfatfooter.php");
 ?>

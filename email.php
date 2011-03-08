@@ -3,6 +3,5 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-header("Location: nextsteps.php");
+mail("jay.nathan@gmail.com", "test", "hi jay, this is a test email.", "From: jay.nathan@changefora10.org");
 ?>
