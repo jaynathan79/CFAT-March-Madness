@@ -7,7 +7,7 @@ $log->encrypt = true;
 
 if($_REQUEST['action'] == "login"){
     // do login
-	$userid = $log->login($_REQUEST['username'], $_REQUEST['password'])
+	$userid = $log->login($_REQUEST['username'], $_REQUEST['password']);
     if($userid > -1){
         session_start();
         $_SESSION['userid'] = $userid;

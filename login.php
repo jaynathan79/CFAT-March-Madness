@@ -1,6 +1,5 @@
 <?php
 	include("cfatheader.php");
-	include("menu.php")
 ?>
 
 <!-- TODO: handle if logged in, only show form if logged out -->
