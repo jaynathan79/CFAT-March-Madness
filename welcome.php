@@ -6,35 +6,64 @@ include("cfatheader.php");
 
 ?>
         <h1>Welcome to Change for a 10</h1>
-        <table style="width: 100%">
-            <tr>
-		<td style="vertical-align: top;" colspan="2">
-                    <input id="submit" class="btn_donate" name='donate' type='button' value='Donate $10 and Play' onclick="document.forms.paypal.submit();return false;"/>
-                    <br/><br/>
-                    <!--div style="font-size: 16pt;">This month...</div-->
-                    <div style="text-align: center;">
-                        <a onclick="document.forms.paypal.submit();return false;" href="#">
-                            <img src="images/Banner_WelcomePage.jpg">
-                        </a>
-                        <!-- img src="http://placekitten.com/850/200" -->
-                    </div>
-                </td>
-            </tr>
-            <!--tr>
-                <td colspan="2">
-                    <div class="bluebold">
-                        Pick all 63 games correctly and we’ll donate an additional $10,000 to your hunger-related charity!
-                    </div>
-                </td>
-            </tr-->
-            <tr>
-                <td style="text-align: left; width: 100%; ">
-                    <input id="submit" class="btn_donate" name='donate' type='button' value='Donate $10 and Play' onclick="document.forms.paypal.submit();return false;"/>
-                    <a style="font-size: 9pt; font-style: italic;" onclick="return false;" class="wijtooltip" title="It's true, I do have a tooltip!" href="#">Can I play if i don't donate?</a>
-                    <!--a onclick="document.forms.paypal.submit();return false;" href="#">Donate $10 and Play</a-->
-                </td>
-            </tr>
-        </table>
+        <div>
+            <p>Enter the Pool, Fight Hunger.</p>
+            
+        </div>
+        <div>
+
+            <table style="width: 100%; border: none">
+                <tr>
+                    <td>
+                        <p>
+                            Why not donate $10 this year to play our pool and fight hunger, instead of paying $10 to enter the office pool?
+                            <input id="submit" class="btn_donate" name='donate' type='button' value='Donate $10 and Play' onclick="document.forms.paypal.submit();return false;"/>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="text-align: center; width: 80%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <div class="question">
+                                        What will you win?
+                                    </div>
+                                    <div class="normaltext">
+                                        The joy of contributing $10 to something meaningful instead of
+                                        "donating" it to the office pool.
+                                    </div>
+                                    <div class="normaltext">
+                                        100% of donations to Hoops to Fight Hunger are directed to hunger-related
+                                        nonprofit organizations.
+                                    </div>
+                                    <div class="normaltext">
+                                        We won't keep a nickel, and we're OK with that. You won't win a nickel, and we
+                                        hope you're okay with that, too!
+                                    </div>
+                                </td>
+                                <td style="width: 50%;">
+                                    <div class="question">
+                                        Which organizations benefit?
+                                    </div>
+                                    <div class="normaltext">
+                                        The 1st (60%), 2nd (30%) and 3rd (10%) place winners' hunger-related charities of their choice.
+                                    </div>
+                                    <div class="question">
+                                        Do I have to donate to play or win?
+                                    </div>
+                                    <div class="normaltext">
+                                        No way, but if you don't donate, no money gets raised; no hungry people are fed, so
+                                        nobody <b><i>really</i></b> wins.
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
 
         <form id="paypal" target="_top" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 

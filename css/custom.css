@@ -1,6 +1,6 @@
 .container {
 	width: 960px;
-	margin:0 auto;
+	margin: 0 auto;
 }
 
 header .logo {
@@ -11,9 +11,10 @@ header .logo {
 
 body {
 	background: #c0c0c0;
-	background-image:url('../images/topbackground_newlogo.jpg');
+	background-image:url('../images/topbackground.jpg');
 	background-repeat:repeat-x;	
-	font-family: "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+	font-family: "Arimo", "helveticaneue","helvetica neue","helveticaneueroman","helveticaneue-roman","helvetica neue roman","helvetica","arial",'texgyreherosregular',"tahoma","geneva",sans-serif;
+        /* font: arial,helvetica,clean,sans-serif;*/
 }
 
 
@@ -21,8 +22,10 @@ label {
 	color: #252525;
 }
 
-header {
-	padding-top: 20px;
+.header {
+	padding: 15px;
+        vertical-align: middle;
+        color: #ffffff;
 }
 
 header img {
@@ -91,6 +94,19 @@ section h1 {
 }
 
 /* Links */
+
+a:visited .login {
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  vertical-align: middle;
+  text-align: right;
+  color: #ffffff;
+  /* position:absolute;
+  right:45px;
+  top:-3px;*/
+}
+
 a {
 	color: #09c;
 	text-decoration: none;
@@ -103,6 +119,56 @@ a:hover {
 
 a:visited {
 	color: #069;
+}
+
+#login{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  vertical-align: middle;
+  text-align: right;
+  color: #ffffff;
+  /* position:absolute;
+  right:45px;
+  top:-3px;*/
+
+}
+
+a .login {
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  vertical-align: middle;
+  text-align: right;
+  color: #ffffff;
+  /* position:absolute;
+  right:45px;
+  top:-3px;*/
+}
+
+a:hover .login {
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  vertical-align: middle;
+  text-align: right;
+  color: #ffffff;
+  /* position:absolute;
+  right:45px;
+  top:-3px;*/
+}
+
+
+a:visited .login {
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  vertical-align: middle;
+  text-align: right;
+  color: #ffffff;
+  /* position:absolute;
+  right:45px;
+  top:-3px;*/
 }
 
 /* Navigation */
@@ -272,10 +338,10 @@ nav ul li a:hover {
 	text-decoration: underline;
 }
 
-nav.login {
+/* nav.login {
 	background-color: #c0c0c0;
 	margin-left: 10px;
-}
+}*/
 
 /* Sign up button */
 a.signup_button {
