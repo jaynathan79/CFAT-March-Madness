@@ -9,11 +9,18 @@ class logmein {
 
 	//database setup
        //MAKE SURE TO FILL IN DATABASE INFO
+	/*
 	var $hostname_logon = "localhost";		//Database server LOCATION
 	var $database_logon = "ncaa";		//Database NAME
 	var $username_logon = "root";		//Database USERNAME
 	var $password_logon = "admin";		//Database PASSWORD
-
+	*/
+	
+	var $hostname_logon = $host;
+	var $database_logon = $database;
+	var $username_logon = $user;		//Database USERNAME
+	var $password_logon = $pass;		//Database PASSWORD
+	
 	//table fields
 	var $user_table = 'users';		//Users table name
 	var $user_column = 'useremail';		//USERNAME column (value MUST be valid email)

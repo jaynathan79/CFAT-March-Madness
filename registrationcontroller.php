@@ -12,8 +12,7 @@ if($_REQUEST['action'] == "login"){
         // assuming login request is successful, redirect to game page
         echo ($_SESSION["userid"]."<br/>");
         echo ($_SESSION["loggedin"]."<br/>");
-
-        echo ("Login succeeded.");
+		echo ("Login succeeded.");
     }else{
         // redirect back to login page
         header('Location: login.php?result=loginfailed');
@@ -55,8 +54,5 @@ if ($_REQUEST['action'] == 'register'){
         //       match and are complex enough.
     }
 }
-
-
-
 
 ?>

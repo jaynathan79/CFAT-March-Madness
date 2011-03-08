@@ -14,8 +14,8 @@ if($meta['closed'] == 0) {
 	header('Location:index.php');
 	exit();
 }
-
-include("header.php");
+include("cfatheader.php");
+include("menu.php");
 
 $id = (int) $_GET['id'];
 $query = "SELECT * FROM `brackets` WHERE `id` = '$id'"; //select entry
@@ -126,25 +126,7 @@ if($picks['name'] != NULL)
 include('bracket_view_module.php');
 viewBracket( $meta, $picks, $team_data, $rank, $score_data, $best_data );
 
-?>
 
-<div id="smacktalk" class="full">
-<a name="comments"></a>
-<h2>Smack Talk</h2><h3></h3>
-<div class="messages" style="max-height: 100%;">
-<table width="100%">
-
-<?php
-$posts = "SELECT c.time, c.content, c.from, c.bracket FROM `comments` c WHERE `bracket`=$id";
-
-$posts = mysql_query($posts,$db);
-
-while ($post = mysql_fetch_array($posts)) {
-	
-	echo "<tr valign='top'><td nowrap><span class='postername' >".stripslashes($post['from']).":</span></td><td>" . stripslashes($post['content']);	
-	echo "</td><td nowrap><span class='date'>" . timeBetween(strtotime($post['time']),time()) . "</span></td></tr>\n";
-
-}
 
 $query = "SELECT * FROM `brackets` WHERE `email` = '" . $_COOKIE['useremail'] ."' LIMIT 0,1"; //select entry
 $user = mysql_query($query,$db);
@@ -152,54 +134,20 @@ $user = mysql_fetch_array($user);
 
 ?>
 
-</table>
-</div>
-
-<br>
-<h2>Add Smack Talk</h2><h3></h3>
-
-<div id="addcomment">
-
-<form method="post" action="addcomment.php">
-	
-	
-		<script type="text/javascript">
-		 $(document).ready(function(){
-		   $("#from").val("<?php echo ($user['person']); ?>");
-		   });
-		</script>
-	
-		<p><div class="comment_field">From:</div><input type="text" name="from" id="from" /></p>
-		<p><div class="comment_field">Comment:</div><textarea name="comment" id="comment" rows="12"></textarea></p>
-		<input type="hidden" name="id" value="<?php echo $id ?>" />
-		<p><input type="submit" name="add" id="add" value="Submit" /></p>
-		<!--<ul id="response" /> -->
-</form>
-
-</div>
-</div>
 
 
-<div id="footer"></div>
-</body> 
-</html> 
 <?php
-
 }else {
-
 ?> 
-<div id="main"> 
-  <div class="right_side"> 
-    <?php include("sidebar.php"); ?> 
-  </div> 
-  <div class="left_side"> 
+
     <h2 align="center">Sorry. That bracket does not exist.</h2> 
     <h2 align="center"><br /> 
       Please try again. </h2> 
     <p align="center"> 
       <input type=button value="Back" onClick="history.back()" /> 
     </p> 
-  </div> 
-</div> 
-</div> 
-</body></html><?php } ?>
+<?php 	
+	}
+	include("cfatfooter.php");
+?>
+

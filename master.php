@@ -1,12 +1,8 @@
 <?php
 
-include("header.php");
+include("cfatheader.php");
+include("menu.php");
 include("admin/functions.php");
-
-?>
-
-
-<?php
 
 $team_query = "SELECT * FROM `master` WHERE `id`=1";
 $team_data = mysql_query($team_query,$db);
@@ -48,9 +44,5 @@ $picks['name'] = "Master Bracket";
 include('bracket_view_module.php');
 viewBracket( $meta, $picks, $team_data, $rank, $score_data, $best_data );
 
+include("cfatfooter.php");
 ?>
-
-	<div id="footer"> </div>
-</div>
-</body>
-</html>

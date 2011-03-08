@@ -52,30 +52,17 @@ session_start();
 	<div class="container">
 		<header>
 			<img src="images/cfattemplogo.png" border="0">
-                        <?php
-                        
+                    <nav class='round login'>
+	    				<ul>
+						<?php
                             if(empty($_SESSION['loggedin'])) {
-                                echo "<nav class='round login'>";
-                                echo "  <ul>";
-                                echo "      <li><a href='/'>Login</a></li>";
-                                echo "  </ul>";
-                                echo "</nav>";
+                                echo "      <li><a href='login.php'>Login</a></li>";
                             } else {
-                                echo "<nav class='round login'>";
-                                echo "  <ul>";
-                                echo "      <li><a href='/'>Logout</a></li>";
-                                echo "  </ul>";
-                                echo "</nav>";
+                                echo "      <li><a href='login.php'>Logout</a></li>";
                             }
                         ?>
-			<nav class="round">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/">Blog</a></li>
-				</ul>
-			</nav>
-                        
-			
+						<ul>
+					</nav>
 		</header>
 		
 		<section class="round content">

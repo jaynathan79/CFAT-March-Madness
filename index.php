@@ -16,35 +16,8 @@ if($blog == NULL) {
 }
 ?>
 	
-		<div id="main">
-			<?php
-				$smackheader=0;
-				while ($post = mysql_fetch_array($comments))
-				{		
-					if( 0 == $smackheader )
-					{
-						echo "<div id='smacktalk'><h2>Latest Smack Talk</h2><div class='messages'><table width='100%'>";
-						$smackheader=1;
-					}
-					echo "<tr><td><span class='postername' >".stripslashes($post['from']).":</span> <a class='teaser' href=\"view.php?id=" . stripslashes($post['bracket']) . "#comments\">" . substr(stripslashes($post['content']),0,250);
-						
-					if (strlen($post['content'])>250)
-					{
-						echo "...";
-					}					
-					
-					echo "</a></td><td><div class='bracketName'><a href=\"view.php?id=" . $post['bracket'] . "#comments\">" . stripslashes($post['name']) . "</a> - <span class='date'>" . timeBetween(strtotime($post['time']),time()) . "</span></div></td></tr>\n";
-
-				}
-				if( $smackheader )
-				{
-					echo "</table></div></div>";
-				}
-			?>
-			<div class="right_side">
-				<?php include("sidebar.php"); ?>
-			</div>
-			<div class="left_side">
+		
+			
 				<?php
                 if(isset($_SESSION['success'])) {
 				?>
@@ -67,9 +40,7 @@ if($blog == NULL) {
 				}
 			?>
 				<br />
-			</div>
 			
-		</div>
 		
 <?php
 	include("cfatfooter.php");
