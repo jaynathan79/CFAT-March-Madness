@@ -1,4 +1,8 @@
 <?php
+/************************************************
+ * The form used to submit a bracket to the database.
+ * Submits to bracket.php.
+ ************************************************/
 include("cfatheader.php");
 include("menu.php");
 
@@ -30,7 +34,6 @@ if(!($seeds = @mysql_fetch_array($seeds))) {//if fetching the array fails, promp
 	exit();
 }
 
-
 for( $i=1; $i <= 64; $i++)
 {
 	$teamNames[$i] = $seeds[$i].". ".$teamNames[$i];
@@ -44,50 +47,46 @@ if($closed['closed'] != 0) {//if the master bracket has been populated
 </div>';
 	exit();
 }
-
 ?>
 	<script type="text/javascript">
 
-function validateFields( alertText )
-{
-	for( var i=1; i<64; i++ )
+	function validateFields( alertText )
 	{
-		var field = document.getElementsByName('game'+i)[0];
-		if( field.value == "" )
+		for( var i=1; i<64; i++ )
 		{
-			alert( "You must pick a winner for this game." );
-			field.focus();
-			return false;
+			var field = document.getElementsByName('game'+i)[0];
+			if( field.value == "" )
+			{
+				alert( "You must pick a winner for this game." );
+				field.focus();
+				return false;
+			}
+		}
+	
+		var moreFields = new Array('bracketname','name','e-mail','tiebreaker');
+	
+		for( var i=0; i < moreFields.length; i++ )
+		{
+			var field = document.getElementsByName( moreFields[i] )[0];
+			if( field.value == "" )
+			{
+				alert( "You must fill out this field");
+				field.focus();
+				return false;
+			}
+		}
+	
+		if( alertText != "" )
+		{
+			return window.confirm(alertText);
+		}
+		else
+		{
+			return true;
 		}
 	}
 	
-	var moreFields = new Array('bracketname','name','e-mail','tiebreaker');
-	
-	for( var i=0; i < moreFields.length; i++ )
-	{
-		var field = document.getElementsByName( moreFields[i] )[0];
-		if( field.value == "" )
-		{
-			alert( "You must fill out this field");
-			field.focus();
-			return false;
-		}
-	}
-	
-	if( alertText != "" )
-	{
-		return window.confirm(alertText);
-	}
-	else
-	{
-		return true;
-	}
-}
-	
-
 	</script>
-	
-	
 		<div class="full">
 			<h2>The Bracket</h2>
 			<h3>&nbsp;</h3>
@@ -529,12 +528,10 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 						<td><?php echo $meta['region4']?> Champion </td>
 					</tr>
 				</table>
-									<br />
-				<p align="center"><label for="name">Bracket Name:</label><input name="bracketname" type="text" id="bracketname" /></p>
-				<p align="center"><label for="e-mail">Your Name:</label><input name="name" type="text" id="name" /></p>
-				<p align="center"><label for="e-mail">E-Mail Address:</label><input name="e-mail" type="text" id="e-mail" /></p>
-				<!--<p align="center"><label for="password">Submission Code:</label><input name="password" type="text" id="password" /></p>-->
-				<p align="center">Tiebreaker (total points scored in championship)
+				<br />
+				
+				
+					<p align="center">Tiebreaker (total points scored in championship)
 					<input name="tiebreaker" type="text" id="tiebreaker" size="10" maxlength="3" />
 					<br />
 					<br />
@@ -544,7 +541,6 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 				</p>
 			</form>
 		</div>
-	
 <?php
 	include("cfatfooter.php");
 ?>

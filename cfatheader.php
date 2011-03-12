@@ -69,7 +69,7 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
                     }
                 ?>
             </div>
-		</header>
+		</div>
 		
 		<section class="round content">
 			<div id="padded">
