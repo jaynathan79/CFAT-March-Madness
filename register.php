@@ -1,26 +1,33 @@
 <?php
     include("cfatheader.php");
 ?>
-        <h1>Create Your Change for a 10 Account</h1>
+        <h1>Hoops to Fight Hunger - A <i>Change for a 10</i> event</h1>
 
         <table style="width: 100%">
             <tr>
 		<td style="vertical-align: middle; width: 50%">
                     
-                    <p style="color: #000000; font-weight: bold; font-size: 12pt;">
-                        What can a $10 donation really accomplish?
+                    <p style="color: #000000; font-weight: bold; font-size: 16pt;">
+                        For you $10 = 1 meal
                     </p>
-                    <p style="color: #000000; font-weight: bold; font-size: 12pt;">
-                        Will recruiting 10 friends really help?
+                    <p style="color: #000000; font-weight: bold; font-size: 16pt;">
+                        For them $10 = 1 <font style="text-decoration: underline">week</font> of meals
                     </p>
-                    <p style="color: #000000; font-weight: bold; font-size: 12pt;">
-                        How quickly can we connect, engage, and have an impact? 
+                    <p style="color: #000000; font-weight: bold; font-size: 16pt;">
+                        Let's bring some sanity back to March Madness
                     </p>
-                    <div style="vertical-align: middle; text-align: right; color: #000000; font-weight: bold; font-size: 24pt;">
-                        Let's Find Out!! >>> <!-- img src="images/Arrow-64.png" alt="Let's Find Out!!"-->
-                    </div>
-				
+                    <table style="padding: 0px;">
+                        <tr>
+                            <td style="color: #000; vertical-align: middle; text-align: right; font-size: 14pt;">
+                                Sounds good to me. Let's go!
+                            </td>
+                            <td>
+                                <img src="images/arrow.png" alt="">
+                            </td>
+                        </tr>
+                    </table>
 		</td>
+                
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
                         <!--div class="in15"-->
@@ -33,30 +40,30 @@
                                 <tr>
                                     <td colspan="2">
                                         <!-- label for='email'>Email</label-->
-                                        <div style="font-weight: bold; font-size: 10pt">Email</div>
+                                        <div class="formlabel">Email</div>
                                         <input class='required big two-column' id='registerusername' name='registerusername' type='email' value='' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div style="font-weight: bold; font-size: 10pt">Password</div>
+                                        <div  class="formlabel">Password</div>
                                         <input class='required big one-column' id='registerpassword' name='registerpassword' type='password' value='' />
                                     </td>
                                     <td>
-                                        <div style="font-weight: bold; font-size: 10pt">Confirm Password</div>
+                                        <div  class="formlabel">Confirm Password</div>
                                         <input class='required big one-column' id='registerconfirmpassword' name='registerconfirmpassword' type='password' value='' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <sub>
+                                        <sub style="color: #000;">
                                             At least 6 characters, including a number / special character
                                         </sub>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Create Account' /> 
+                                        <input id="submit" class="btn_join" name='submit' type='submit' value='Join Now' />
                                         <br/>
                                         <br/>
                                     </td>
@@ -79,21 +86,21 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <hr style="width=80%; height: 1px; margin: auto;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <table style="width: 90%">
                         <tr>
                             <td>
-                                <div class="unit size1of2">
+                                <!-- div class="unit size1of2">
                                     <div class="in15">
-                                        <div style="font-size: 16pt">This Month's Featured Event</div>
-                                        <p style="font-size: 10pt">
+                                        <p style="font-size: 10pt"-->
                                             <img src="images/HoopsToFightHunger_SignInPa.jpg" alt="Hoops to Fight Hunger, 2011"/>
-                                        </p>
-                                        <p>
-                                            Pick all 63 games correctly and we’ll donate an additional $10,000 to the hunger-related charity of your choice!
-                                        </p>
-
+                                        <!-- /p>
                                     </div>
-                                </div>
+                                </div -->
                             </td>
                             <td>
                                 <p>
@@ -161,6 +168,8 @@
                     if (isvalid){
                         // submit form once everything is confirmed valid from the server.
                         $("#registerform").submit();
+                        
+                        // TODO: Show dialog box here
                     } else {
                         // don't submit form unless everything is valid
                         return false;

@@ -19,3 +19,5 @@ alter table users add (
     first_name VARCHAR(25) NOT NULL DEFAULT '',
     last_name VARCHAR(25) NOT NULL DEFAULT ''
 );
+
+alter table users add (`resetpwdnextlogon` INT(1) NOT NULL DEFAULT '0' COMMENT '1 means pwd has been generated and needs to be reset by user at next logon' );

@@ -1,0 +1,62 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="js/jquery.min.1.4.js"></script>
+  <script src="js/jquery-ui.min.1.8.js"></script>
+  <script>
+  $(document).ready(function() {
+
+    $("#testbutton").click(function(){
+      $("#dialog-message" ).dialog({
+            height:350,
+            width: 500,
+            modal: true,
+            position: "top",
+            title: "Change for a 10",
+            buttons: [{
+                text: "Proceed to Paypal",
+                click: function() { alert("submit form to paypal here..."); $(this).dialog("close"); }
+            },
+            {
+                text: "Cancel",
+                click: function() { $(this).dialog("close"); }
+            }]
+     });
+
+   // $("#dialog").dialog();
+  });
+      
+      });
+
+
+  </script>
+</head>
+<body>
+
+<div id="dialog-message" title="Dialog Title" style="display: none;">
+    <p>
+        You will now be taken to Paypal to make a secure, one-time donation to Change for a 10 for the Hoops to Fight Hunger campaign.
+    </p>
+    <p>
+        Please follow the instructions and pay with your credit card or Paypal account.
+        After payment click the <b>Return to Change for a 10, Inc.</b>
+        button to return to our site.
+    </p>
+    
+
+</div>
+    <div>
+        <input type="button" id="testbutton" style="padding: 10px; border: #00529B 1px;" value="click me">
+    </div>
+    
+    
+  </body>
+</html>

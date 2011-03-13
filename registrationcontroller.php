@@ -1,13 +1,18 @@
 <?php
 //date_default_timezone_set('America/Los_Angeles');
+include("admin/database.php");
 include("class.login.php");
 
 $log = new logmein();
+$log->username_logon = $user;
+$log->password_logon = $pass;
+
 $log->encrypt = true;
 
 if($_REQUEST['action'] == "login"){
     // do login
-	$userid = $log->login($_REQUEST['username'], $_REQUEST['password']);
+    $userid = $log->login($_REQUEST['username'], $_REQUEST['password']);
+
     if($userid > -1){
         session_start();
         $_SESSION['userid'] = $userid;
@@ -16,12 +21,25 @@ if($_REQUEST['action'] == "login"){
         $_SESSION['ispaid'] = false;
 
         // registration and login were successful, redirect to welcome page
-        header('Location: welcome.php');
+        header('Location: nextsteps.php');
         //echo "<script>window.location.href='welcome.php';</script>";
     } else {
         echo "login failed.";
         session_destroy();
     }    
+}
+
+if($_REQUEST['action'] == 'passwordreset')
+{
+    $userid = $_REQUEST['email'];
+
+    if($log->passwordreset($userid))
+    {
+        echo "Your password has been reset, please check your email at $userid.";
+    } else {
+        echo $log->last_error_message;
+    }
+
 }
 
 if($_REQUEST['action'] == "logout"){

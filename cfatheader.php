@@ -24,8 +24,12 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="http://cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" />
     <link href="http://cdn.wijmo.com/jquery.wijmo-open.1.0.1.css" rel="stylesheet" type="text/css" />
-    <link href="http://cdn.wijmo.com/jquery.wijmo-complete.1.0.1.css" rel="stylesheet"
-        type="text/css" />
+    <link href="http://cdn.wijmo.com/jquery.wijmo-complete.1.0.1.css" rel="stylesheet" type="text/css" />
+
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="js/jquery.min.1.4.js"></script>
+  <script src="js/jquery-ui.min.1.8.js"></script>
+
     <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.3.min.js" type="text/javascript"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.min.js" type="text/javascript"></script>
     <script src="http://cdn.wijmo.com/external/jquery.bgiframe-2.1.3-pre.js" type="text/javascript"></script>
@@ -46,6 +50,19 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	<!-- from tourney header -->
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/emailall.js"></script>
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-17444271-3']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
 	<?php
 	//if this is the submit or what-if page, include the necessary javascript
 	if(strpos($_SERVER['PHP_SELF'],"submit.php") !== FALSE || strpos($_SERVER['PHP_SELF'],"whatif.php") !== FALSE) {
@@ -57,20 +74,35 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	
 </head>
 <body>
-        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 10;">
+        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;">
         <div class="container">
-            <header>
-
-                 <?php
-                    if($loggedin == false) {
-                        echo "<a href='./login.php' id='login' class='login'>Log In</a>";
-                    } else {
-                        echo "<span id='login'>Logged in as ".$useremail." <a href='./logout.php' id='login'>(log out)</a><span>";
-                    }
-                ?>
+            <header class="header">
+                 
+                <table class="round" style="width: auto; float: right; background: #ffffff url('images/diagonal-gray.png');">
+                            <tr>
+                                <td style="color: #000; vertical-align: middle; text-align: right;">
+                                    <a href="register.php">register</a> |
+                                    <a href="faq.php">faq</a> |
+                                    <a style="font-weight: bold;" href="welcome.php">donate!</a> |
+                                
+                                    <?php
+                                        if($loggedin == false) {
+                                            echo "<a href='./login.php'>log in</a>";
+                                        } else {
+                                            echo "<a href='./logout.php'>log out</a>: Logged in as ".$useremail;
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                </table>
+                <br/>
 		</header>
 		
-		<section class="round content">
-			<div id="padded">
+		<!-- section class="round content" -->
+                <section class="round content" style="background: #ffffff url('images/diagonal-gray.png');'">
+                      
+
+                        <div id="padded">
+                            
                             
 		<!-- end header -->

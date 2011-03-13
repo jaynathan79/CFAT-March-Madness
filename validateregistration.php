@@ -5,10 +5,13 @@
  * already exists in the system. The result of this page is serialized to JSON
  *
  */
-
+include("admin/database.php");
 include("class.login.php");
 
 $log = new logmein();
+$log->username_logon = $user;
+$log->password_logon = $pass;
+
 $username = "";
 $password = "";
 $confirmpassword = "";

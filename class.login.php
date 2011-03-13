@@ -12,24 +12,28 @@ class logmein {
 	// 				var $password_logon = "root";		//Database PASSWORD
 	
 	var $hostname_logon = "localhost";		//Database server LOCATION
-					var $database_logon = "ncaa";		//Database NAME
-					var $username_logon = "root";		//Database USERNAME
-					var $password_logon = "admin";		//Database PASSWORD
+        var $database_logon = "ncaa";		//Database NAME
+        var $username_logon = "";		//Database USERNAME
+        var $password_logon = "";		//Database PASSWORD
 	
 	//table fields
 	var $user_table = 'users';		//Users table name
 	var $user_column = 'useremail';		//USERNAME column (value MUST be valid email)
 	var $pass_column = 'password';		//PASSWORD column
 	var $user_level = 'userlevel';		//(optional) userlevel column
-    public $last_error_message = "";
+
+        public $last_error_message = "";
 
 	//encryption
 	var $encrypt = false;		//set to true to use md5 encryption for the password
 
-	//connect to database
+        //connect to database
 	function dbconnect()
 	{
-            $connections = mysql_connect($this->hostname_logon, $this->username_logon, $this->password_logon) or die ('Unabale to connect to the database');
+            if($_SERVER['SERVER_NAME'] == "www.changefora10.org"){
+
+            }
+            $connections = mysql_connect($this->hostname_logon, $this->username_logon, $this->password_logon) or die ('Unable to connect to the database: class.login.php -> dbconnect()');
             mysql_select_db($this->database_logon) or die ('Unable to select database!');
             return;
 	}
@@ -131,34 +135,27 @@ class logmein {
 	}
 
 	//reset password
-	function passwordreset($username, $user_table, $pass_column, $user_column){
+	function passwordreset($username){
 		//conect to DB
 		$this->dbconnect();
 		//generate new password
 		$newpassword = $this->createPassword();
 
 		//make sure password column and table are set
-		if($this->pass_column == ""){
-			$this->pass_column = $pass_column;
-		}
-		if($this->user_column == ""){
-			$this->user_column = $user_column;
-		}
-		if($this->user_table == ""){
-			$this->user_table = $user_table;
-		}
-		//check if encryption is used
-		if($this->encrypt == true){
-			$newpassword = md5($newpassword);
-		}
+                $this->pass_column = $pass_column;
+                $this->user_column = $user_column;
+                $this->user_table = $user_table;
+
+                $newhashedpassword = md5($newpassword);
 
 		//update database with new password
-		$qry = "UPDATE ".$this->user_table." SET ".$this->pass_column."='".$newpassword."' WHERE ".$this->user_column."='".stripslashes($username)."'";
+		$qry = "UPDATE users SET password ='".$newhashedpassword."' WHERE useremail ='".stripslashes($username)."'";
 		$result = mysql_query($qry) or die(mysql_error());
 
 		$to = stripslashes($username);
 		//some injection protection
-		$illigals=array("n", "r","%0A","%0D","%0a","%0d","bcc:","Content-Type","BCC:","Bcc:","Cc:","CC:","TO:","To:","cc:","to:");
+		// $illigals=array("n", "r","%0A","%0D","%0a","%0d","bcc:","Content-Type","BCC:","Bcc:","Cc:","CC:","TO:","To:","cc:","to:");
+                $illigals=array("%0A","%0D","%0a","%0d","bcc:","Content-Type","BCC:","Bcc:","Cc:","CC:","TO:","To:","cc:","to:");
 		$to = str_replace($illigals, "", $to);
 		$getemail = explode("@",$to);
 
@@ -166,22 +163,29 @@ class logmein {
 		if(sizeof($getemail) > 2){
 			return false;
 		}else{
+
 			//send email
 			$from = $_SERVER['SERVER_NAME'];
 			$subject = "Password Reset: ".$_SERVER['SERVER_NAME'];
-			$msg = "<p>Your new password is: ".$newpassword."</p>";
-
+			$msg = "<p>A temporary Change for a 10 password has been generated for you: $newpassword</p>";
+                        $msg = $msg."You can use this password, or ";
+                        $msg = $msg."<a href='$from/resetpassword.php?l=".md5($newpassword)."'>click here</a> to reset your password.</p>";
+                        
 			//now we need to set mail headers
-			$headers = "MIME-Version: 1.0 rn" ;
-			$headers .= "Content-Type: text/html; rn" ;
-			$headers .= "From: $from  rn" ;
+			$headers = "MIME-Version: 1.0 \r\n" ;
+			$headers .= "Content-Type: text/html; \r\n" ;
+			$headers .= "From: jay.nathan@changefora10.org \r\n" ;
 
 			//now we are ready to send mail
-			$sent = mail($to, $subject, $msg, $headers);
+			// $sent = mail("jay.nathan@gmail.com", $subject, $msg, "From: jay.nathan@changefora10.org");
+                        $sent = mail($to, $subject, $msg, $headers);
+
 			if($sent){
-				return true;
+                                // echo "Your password has been reset, please check your email at $to";
+                            return true;
 			}else{
-				return false;
+                            $this->last_error_message = "Your password has been reset, but there was a problem sending you an email, please <a href='resetpassword.php'>try again</a>.";
+                            return false;
 			}
 		}
 	}

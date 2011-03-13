@@ -1,11 +1,11 @@
 <?php
     include("cfatheader.php");
 ?>
-        <h1>Thanks for signing up! Here's what's next... </h1>
+        <h1>Thanks for signing up! Next steps... </h1>
 
-        <table style="width: 100%">
+        <table style="width: 100% color: #000000;">
             <tr>
-		<td style="vertical-align: top; width: 65%">
+		<td style="vertical-align: top; width: 100%">
                     <div class="unit size1of2">
                         <div class="in15">
                             <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
@@ -13,37 +13,60 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <div style="font-size: 16pt;">
+                                        <div style="font-size: 16pt; color: #000000;">
                                             1. Choose your favorite charity
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" color: #000000;">
+                                        <div id="charityselectedmsg" class="valid" style="width: 75%;">
+                                            Your selection has been saved!
+                                        </div>
+                                        If you place in the top 3 within the tournament, you get to choose how to spend the money.
+                                        Here are your choices:<br/>
+                                        
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <select id="charityselector" name="charityselector">
+                                                        <option value="-1">Choose one...</option>
+                                                        <option value="Local Feeding America Chapter">Local Feeding America Chapter</option>
+                                                        <option value="Local Meals on Wheels Chapter">Local Meals on Wheels Chapter</option>
+                                                        <option value="Other">Specify Other...</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input class="required big two-column" type="text" name="writeincharity" id="writeincharity" value=""/>
+                                                </td>
+                                            <tr>
+                                                <td>
+                                                    <input type="button" class="btn_join" id="charityselectbutton" value="Save Selection" name="charityselectbutton"/>
+                                                </td>
+                                                <td style="vertical-align: top; font-weight: bold; color: #FF0000;">
+                                                    <span id="inputotherprompt" style="visibility: hidden;" name="inputotherprompt">
+                                                        Please specify other, or choose a charity from the list.
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                                
+                                        </table>
+                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="font-size: 16pt; color: #000000;">
+                                            2. Recruit your friends
+                                            <br/>
+                                            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.changefora10.org" show_faces="true" width="450" font=""></fb:like>
                                         </div>
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div id="charityselectedmsg" class="valid" style="width: 75%;">
-                                            Your selection has been saved!
-                                        </div>
-                                        If you place in the top 3 within the tournament, you get to choose how to spend the money.
-                                        Here are your choices:<br/>
-                                        <select id="charityselector" name="charityselector">
-                                            <option value="charity 1">charity 1</option>
-                                            <option value="charity 2">charity 2</option>
-                                            <option value="charity 3">charity 3</option>
-                                        </select><br/>
-                                        <input type="button" id="charityselectbutton" value="Save Selection" name="charityselectbutton">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div style="font-size: 16pt;">
-                                            2. Recruit your friends
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <ul>
+                                        <ul style=" color: #000000;">
                                             <li>Share on Facebook wall</li>
                                             <li>Like Hoops to Fight Hunger on Faceboook</li>
                                             <li>Tweet about it!</li>
@@ -52,14 +75,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div style="font-size: 16pt;">
+                                        <div style="font-size: 16pt; color: #000000;">
                                             3. Make your picks
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Your bracket will be ready on <B>[DATE]</B>. We'll send you and email
+                                    <td style=" color: #000000;">
+                                        Your bracket will be ready on <B>Sunday, March 13 after 10pm Eastern Standard Time</B>. We'll send you and email
                                         reminder to come back and make your picks.
                                     </td>
                                 </tr>
@@ -68,7 +91,7 @@
                         </div>
                     </div>
 		</td>
-                <td style="vertical-align: top; width: 35%">
+                <td style="vertical-align: top; width: 0%">
                     <div class="unit size1of2">
                         <div class="in15">
                             <!-- div style="font-size: 14pt">Join us now!</div>
@@ -102,12 +125,27 @@
 
             $(document).ready(function(){
                 $("#charityselectedmsg").hide();
+                // set status of write in charity box to disabled
+                //$("#writeincharity").attr('disabled', true);
+                $("#writeincharity").hide();
+                $("#inputotherprompt").hide();
 
                 $('#charityselectbutton').click(function(event){
-
                     var data = {};
-                    data['charity'] = $("select#charityselector").val();
-
+                    if($('#charityselector').val() == "-1")
+                        return false;
+                    
+                    if($('#charityselector').val() == "Other"){
+                        if($('#writeincharity').val() == ""){
+                            $('#inputotherprompt').fadeIn(3000);
+                            $('#inputotherprompt').fadeOut(3000);
+                            return false;
+                        }
+                        data['charity'] = $('#writeincharity').val();
+                    } else {
+                        data['charity'] = $("select#charityselector").val();
+                    }
+                                      
                     $.ajax({
                        url: 'saveusercharity.php',
                        dataType: 'json',
@@ -117,9 +155,10 @@
 
                             if(jd.isvalid){
                                 $("#charityselectedmsg").html(jd.message);
-                                $("#charityselectedmsg").show();
-                                $("#charityselectedmsg").hide();
+                                //$("#charityselectedmsg").show();
+                                //$("#charityselectedmsg").hide();
                                 $("#charityselectedmsg").fadeIn(2000);
+                                $("#charityselectedmsg").fadeOut(3000);
 
                                // $("#charityselectedmsg").effect("shake", {times:1}, 100);
                                 return true;
@@ -129,6 +168,26 @@
                        },
                        error: function(jq, textStatus, e) {alert("error: " + e);}
                     });
+                });
+
+                $('#charityselector').change(function(event){
+
+                    if($('#charityselector').val() == 'Other'){
+                        // $('#writeincharity').addClass('bigfocus');
+                        // $('#writeincharity').attr('disabled', false);
+                        $("#writeincharity").show();
+                        $('#writeincharity').focus();
+                    } else {
+                        // $('#writeincharity').removeAttr('disabled');
+                        // $('#writeincharity').removeClass('bigfocus');
+                        $("#writeincharity").hide();
+                    }
+                    
+                });
+
+                $('#writeincharity').blur(function(event){
+                    $('#writeincharity').removeClass('bigfocus');
+
                 });
             });
 

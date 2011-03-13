@@ -1,12 +1,5 @@
 <?php
-include("cfatheader.php");
-include("menu.php");
-include("admin/functions.php");
+header("Location: register.php");
 ?>
-	
-Welcome <?=$useremail ?>!
-			
+
 		
-<?php
-	include("cfatfooter.php");
-?>
