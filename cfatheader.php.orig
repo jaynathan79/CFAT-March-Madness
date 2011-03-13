@@ -57,47 +57,23 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	
 </head>
 <body>
-<<<<<<< HEAD
         <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 10;">
         <div class="container">
-            <div class="header">
+            <header>
 
                  <?php
-                    if($userid == "") {
+                    if($loggedin == false) {
                         echo "<a href='./login.php' id='login' class='login'>Log In</a>";
                     } else {
-                        echo "<a href='./logout.php' id='login' class='login'>Log Out</a>";
+                        echo "<span id='login'>Logged in as ".$useremail." <a href='./logout.php' id='login'>(log out)</a><span>";
                     }
                 ?>
+<<<<<<< HEAD
             </div>
-                       
+		</div>
 =======
-	<div class="container">
-		<header>
-			<a href="/">
-				<img src="images/cfattemplogo.png" border="0">
-			</a>
-			
-            <nav class='round login'>
-	  			<ul>
-				<?php
-	                         if($userid == "") {
-	                             echo "      <li><a href='login.php'>Login</a></li>";
-	                         } else {
-	                             echo "      <li><a href='registrationcontroller.php?action=logout'>Logout</a></li>";
-	                         }
-	                     ?>
-				<ul>
-			</nav>
-			
-			<?php
-				if($loggedin == true)
-				{
-					echo "<div style='float:right'>Logged in as ".$useremail."<div>";
-				}
-			?>
 		</header>
->>>>>>> 16b74266ec55c13b1a0a9b1c567207826dda36b7
+>>>>>>> e82aaf3a37971845e4af31547140d88df36fb0a8
 		
 		<section class="round content">
 			<div id="padded">

@@ -1,6 +1,5 @@
 <?php
 include 'functions.php';
-validatecookie();
 include("header.php");
 
 $iphone = false;
@@ -34,7 +33,7 @@ if($id == 0) {
 	$picks = mysql_fetch_array($picks);
 }
 else {
-	$query = "SELECT * FROM `brackets` WHERE `id` = '$id'"; //select entry
+	$query = "SELECT b.*,u.displayname, u.useremail FROM `brackets` b join users u on u.userid = b.userid WHERE b.id = '$id'"; 
 	$picks = mysql_query($query,$db);
 	$picks = mysql_fetch_array($picks);
 }
@@ -52,7 +51,7 @@ else {
 			<?php if($id == 0) { ?>
 			<h2>The Master Bracket</h2>
 			<?php } else { ?>
-			<h2><?php echo $picks['name']?>&rsquo;s Bracket</h2>
+			<h2><?php echo $picks['useremail']?>&rsquo;s Bracket</h2>
 			<?php } ?>
 			<h3>&nbsp;</h3>
 			<form method="post" name="bracket" class="bracket" id="bracket" action="update.php?id=<?php echo $id?>">

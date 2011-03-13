@@ -1,5 +1,20 @@
 <?php
+// Header for admin section
 include("database.php");
+session_start();
+
+// these variables should be available to every page which includes cfatheader
+$userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
+$useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
+$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
+$isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SESSION['isadmin'] : false;
+
+if(!$isadmin){
+	header("Location: ../login.php");
+}
+
+
 $query = "SELECT * FROM `meta` WHERE `id`=1";
 $meta = mysql_query($query,$db);
 $meta = mysql_fetch_array($meta);
@@ -139,13 +154,7 @@ function resetBracket()
 			<div id="menu">
 			  	<ul>
 					<li><a href="../index.php">HOME</a></li>
-					<li><a href="../submit.php">CREATE BRACKET</a></li>
-					<li><a href="../rules.php">RULES</a></li>
-					<li><a href="../choose.php">STANDINGS</a></li>
-					<?php if($meta['cost'] != 0) { ?>
-					<li><a href="paid.php">PAYMENT TRACKER</a></li>
-					<?php } ?>
-					<li><a href="../admin/">ADMIN AREA</a></li>					
+					<li><a href="../admin/">ADMIN</a></li>					
       			</ul>
 			</div>
 		</div>

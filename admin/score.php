@@ -1,14 +1,12 @@
 <?php
-
 include("database.php");
 include 'functions.php';
-validatecookie();
 
 function scoreBrackets( $db, $master_data, $loserMap, $roundMap, $seedMap, $scoringType)
 {
 
 	$custompoints = getScoringArray($db, $scoringType);
-	$query = "SELECT * FROM `brackets`";
+	$query = "SELECT b.*, displayname, useremail FROM `brackets` b join users u on u.userid = b.userid";
 	$result = mysql_query($query,$db);	
 	
 	while ($user_bracket = mysql_fetch_array($result, MYSQL_ASSOC))
@@ -35,16 +33,16 @@ function scoreBrackets( $db, $master_data, $loserMap, $roundMap, $seedMap, $scor
 			
 		}
 		
-		if ($user_bracket['paid'] > 0)
-		{
-			$user_bracket['name'] = mysql_real_escape_string($user_bracket['name']);
+		//if ($user_bracket['paid'] > 0)
+		//{
+			$user_bracket['id'] = mysql_real_escape_string($user_bracket['id']);
 			
-			$score_query = "INSERT INTO `scores` () VALUES ('$user_bracket[id]','$user_bracket[name]','$score','$scoringType')";
+			$score_query = "INSERT INTO `scores` () VALUES ('$user_bracket[id]','$user_bracket[displayname]','$score','$scoringType')";
 			mysql_query($score_query,$db) or die(mysql_error());
 			
-			$score_query = "INSERT INTO `best_scores` () VALUES ('$user_bracket[id]','$user_bracket[name]','$bestScore','$scoringType')";
+			$score_query = "INSERT INTO `best_scores` () VALUES ('$user_bracket[id]','$user_bracket[displayname]','$bestScore','$scoringType')";
 			mysql_query($score_query,$db) or die(mysql_error());
-		}
+		//}
 	}
 
 }

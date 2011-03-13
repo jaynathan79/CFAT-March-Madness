@@ -1,5 +1,6 @@
 <?php
-include("header.php");
+include("cfatheader.php");
+include("menu.php");
 
 $closed = "SELECT closed FROM `meta` WHERE id=1 LIMIT 1";
 $closed = mysql_query($closed,$db); //boolean if bracket submission is over
@@ -25,13 +26,9 @@ $sweet16 = mysql_fetch_array($sweet16);
 
 		
 
-		<div id="main">
+	
 
-			<div class="right_side"><?php include("sidebar.php"); ?>
-
-			</div>
-
-			<div class="left_side">
+			
 
 				<h2>The Standings </h2>
 
@@ -49,11 +46,9 @@ $sweet16 = mysql_fetch_array($sweet16);
 					if($closed[0] == 1) {
 					?>
 					<li><a href="standings.php?type=normal">Standings</a></li>															
-					<li><a href="champ.php">Champion selections</a></li>
-					
-					
+					<!--<li><a href="champ.php">Champion selections</a></li>
 					<li><a href="scoredetail.php">Who picked whom?</a> - (By round)</li>
-					<li><a href="standings.php?type=best">Best possible scores</a></li>
+					<li><a href="standings.php?type=best">Best possible scores</a></li>-->
 					</ul>
 					<?php
 						if($sweet16[0] == 1) {
@@ -67,23 +62,8 @@ $sweet16 = mysql_fetch_array($sweet16);
 					}
 					?>
 
-				
-
-			</div>
-
-			
-
-		</div>
-
 		
 
-		<div id="footer">
-
-		</div>
-
-	</div>
-
-</body>
-
-</html>
-
+<?php
+	include("cfatfooter.php");
+?>

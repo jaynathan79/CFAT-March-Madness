@@ -1,43 +1,35 @@
 <?php
-
 function viewBracket( $meta, $picks, $team_data, $rank, $score_data, $best_data )
 {
 ?>
 
 <script>
+	function displayNextRoundWinValue( val )
+	{
+		window.status = "A win in the next round for this team is worth " + val;
+		return true;
+	}
 
-function displayNextRoundWinValue( val )
-{
-	window.status = "A win in the next round for this team is worth " + val;
-	return true;
-}
-
-function clearStatus()
-{
-	window.status = "";
-	return true;
-}
-
+	function clearStatus()
+	{
+		window.status = "";
+		return true;
+	}
 </script>
-
-
 
 <link rel="stylesheet" media="print" href="images/print.css" type="text/css" />
  
-  
-     <?php
-     	echo stripslashes($picks['name']);
-	?>
-		  <table class="bracketview">
-		 	<tr>
-				<?php if( $rank != "" ) { ?> <td>Rank: <?php echo $rank ?></td><?php } ?>
-				<?php if( $best_data['score'] != "" ) { ?> <td>Best Score Possible: <?php echo $best_data['score'] ?></td><?php } ?>
-			</tr>
-			 <tr>
-				<?php if( $score_data['score'] != "") { ?><td>Score: <?php echo $score_data['score'] ?></td><?php } ?>
-				<?php if( $best_data['score'] != "") { ?><td>Possible Points Remaining: <?php echo $best_data['score']- $score_data['score'] ?></td><?php } ?>
-			</tr>
-		 </table>
+<?= stripslashes($picks['displayname']) ?>
+<table class="bracketview">
+ 	<tr>
+		<?php if( $rank != "" ) { ?> <td>Rank: <?php echo $rank ?></td><?php } ?>
+		<?php if( $best_data['score'] != "" ) { ?> <td>Best Score Possible: <?php echo $best_data['score'] ?></td><?php } ?>
+	</tr>
+	 <tr>
+		<?php if( $score_data['score'] != "") { ?><td>Score: <?php echo $score_data['score'] ?></td><?php } ?>
+		<?php if( $best_data['score'] != "") { ?><td>Possible Points Remaining: <?php echo $best_data['score']- $score_data['score'] ?></td><?php } ?>
+	</tr>
+ </table>
 	
 	 <div id="printlink"><h3><a href="#" onclick="window.print();">Printable Version</a></h3></div>
      
@@ -262,9 +254,6 @@ function clearStatus()
           <td width="100" align="right"><?php echo $meta['region4']; ?> </td> 
         </tr> 
        </table> 
-
-
 <?php
 }
-
 ?>

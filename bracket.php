@@ -1,14 +1,19 @@
 <?php
+/************************************************
+ * Processes bracket information to be stored in the database.
+ * Processes information from submit.php
+ ************************************************/
+
 session_start();
 include("admin/database.php");
 include("admin/functions.php");
 
+$userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
+$useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
+$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
 
 $tiebreaker = $_POST['tiebreaker'];
-$bracketname = $_POST['bracketname'];
-$person = $_POST['name'];
-$email = $_POST['e-mail']; 
-//$submitpassword = htmlentities($_POST['password']); 
 
 $meta = "SELECT * FROM `meta` WHERE id=1";
 $meta = mysql_query($meta,$db); //grabs administrator's email
@@ -40,9 +45,7 @@ if(isset($_POST['print']))
 		$team_data[$i] = $seedMap[$team_data[$i]].". ".$team_data[$i];
 	}
 ?>
-
 <link rel="stylesheet" href="images/print.css" type="text/css" />
-
 <?php
 
 	viewBracket( $meta, $picks, $team_data, $rank, $score_data, $best_data );
@@ -64,48 +67,8 @@ while($_POST[$i] != NULL) {
 	++$i;
 }
 
-/*
-$numberleft = 99;
-$validemail = false;
-$row = mysql_fetch_array($result);
-$validemail = true;
-$numberleft = $row["numberleft"];
-$numbertotal = $row["numbertotal"];
-$username = $row["name"];
-$useremail = $row["email"];
-*/
-
-/* must comment this out because sending an error causes you to lose the post data, meaning that the user would ahve to fill out the whole form again
-if ($numberleft < 1) {
-	$_SESSION['errors'] = "You have already entered a bracket or brackets.  You must pay to enter additional brackets.";
-	header('Location:submit.php');
-	exit();
-}*/
-
-// validate fields
-/*
-must comment this out because sending an error causes you to lose the post data, meaning that the user would ahve to fill out the whole form again
-$allFieldsFilled = true;
-$missedField = "";
-
-for( $i = 0; $i < 64; $i++ )
-{
-	if( $_POST["game".$i] == "" )
-	{
-		$allFieldsFilled = false;
-		$missedField = "game".$i;
-		break;
-	}
-}
-
-if( !allFieldsFilled )
-{
-	$_SESSION['errors'] = "<p>A winner for ALL games must be selected. You missed one.</p>";
-	header('Location:submit.php');
-	exit();
-}*/
-
-if($tiebreaker != NULL && is_numeric($tiebreaker) && $person != NULL && $email != NULL)  //validates that the form was submitted to prevent spamming
+//validate that the form was submitted to prevent spamming
+if($tiebreaker != NULL && is_numeric($tiebreaker) && $person != NULL && $email != NULL)  
 {
 	$body = "Your bracket has been successfully submitted.";
 	$_SESSION['success'] = "<p>".$body."</p>";
@@ -122,36 +85,9 @@ if( $meta['cost'] == 0 )
    $paid = 2; // if the cost to enter is zero, exempt every bracket on entry.
 }
 
-/*
-if ($validemail == false)
-{
-	// create new user 
-	$query = "INSERT INTO `users` (`name`,`email`,`paid`,`numbertotal`,`numberleft`) VALUES ('$person','$email','0','1','0')";
-	mysql_query($query) or die(mysql_error()); //inserts entry into the dataase
-	$username = $person;
-	$useremail = $email;
-}
-else
-{
-	// check number of paid submissions left
-	$numbertotal++;
-	$numberleft = $numberleft-1;
-	if( $numberleft >= 0 )
-	{
-		$paid = 1;
-	}
-		
-	// update user table
-	$query = "UPDATE `users` SET `numberleft` = '$numberleft', `numbertotal` = '$numbertotal' WHERE UPPER(`email`) = '".strtoupper($useremail)."'";
-	mysql_query($query) or die(mysql_error()); //inserts entry into the database
-}
-*/
-
 // submit bracket
-$query = "INSERT INTO `brackets` (`person`,`name`,`email`,`tiebreaker`,`paid`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`,`10`,`11`,`12`,`13`,`14`,`15`,`16`,`17`,`18`,`19`,`20`,`21`,`22`,`23`,`24`,`25`,`26`,`27`,`28`,`29`,`30`,`31`,`32`,`33`,`34`,`35`,`36`,`37`,`38`,`39`,`40`,`41`,`42`,`43`,`44`,`45`,`46`,`47`,`48`,`49`,`50`,`51`,`52`,`53`,`54`,`55`,`56`,`57`,`58`,`59`,`60`,`61`,`62`,`63`) VALUES (";
-$query .= "'".mysql_real_escape_string($person)."',";
-$query .= "'".mysql_real_escape_string($bracketname)."',";
-$query .= "'".mysql_real_escape_string($email)."',";
+$query = "INSERT INTO `brackets` (`userid`,`tiebreaker`,`paid`,`1`,`2`,`3`,`4`,`5`,`6`,`7`,`8`,`9`,`10`,`11`,`12`,`13`,`14`,`15`,`16`,`17`,`18`,`19`,`20`,`21`,`22`,`23`,`24`,`25`,`26`,`27`,`28`,`29`,`30`,`31`,`32`,`33`,`34`,`35`,`36`,`37`,`38`,`39`,`40`,`41`,`42`,`43`,`44`,`45`,`46`,`47`,`48`,`49`,`50`,`51`,`52`,`53`,`54`,`55`,`56`,`57`,`58`,`59`,`60`,`61`,`62`,`63`) VALUES (";
+$query .= "'".mysql_real_escape_string($userid)."',";
 $query .= "'".mysql_real_escape_string($tiebreaker)."',";
 $query .= "'".mysql_real_escape_string($paid)."',";
 
@@ -168,14 +104,8 @@ if($meta['mail']==1)
 { //if mail is configured
 	
 	// prepare administrator email body text
-	$body .= "Name: ";
-	$body .= $person;
-	$body .= "\n";
-	$body .= "Bracket Name: ";
-	$body .= $bracketname;
-	$body .= "\n";
 	$body .= "Entrant's Email: ";
-	$body .= $email;
+	$body .= $useremail;
 	$body .= "\n";
 	$body .= "Tiebreaker (# of points in the championship): ";
 	$body .= $tiebreaker;
@@ -190,32 +120,9 @@ if($meta['mail']==1)
 	// send email to admin
 	mail($adminEmail, $subject, "A bracket has been submitted to your pool.  This email should serve as a backup copy in the event that something happens to your database.\n\n".$body, "From: <$email>");
 	// send confirmation to the entrant
-	mail($email, "I have received your bracket","This is an automated email.  If you receive this, I have your submission.  Thanks for playing! -$meta[name]\n\n".$body, "From: <$adminEmail>");
+	mail($useremail, "I have received your bracket","This is an automated email.  If you receive this, I have your submission.  Thanks for playing! -$meta[name]\n\n".$body, "From: <$adminEmail>");
 }
 //redirects to a confirmation notice
 header('Location:index.php');
 exit();
-
-/*
-
-This is being handled in java script
-must comment this out because sending an error causes you to lose the post data, meaning that the user would ahve to fill out the whole form again
-
-else if(!is_numeric($tiebreaker)) {
-	$_SESSION['errors'] .= "<p>The tiebreaker must be a number.</p>";
-	//header('Location:submit.php?'.$postString);
-	header('Location:submit.php', TRUE, 307);
-	//header( $postString );
-	exit();
-}
-else {
-
-	$_SESSION['errors'] .= "<p>You must enter your name, e-mail address, and a tiebreaker.</p>";
-
-	header('Location:submit.php');
-	header( $postString );
-	exit();
-}
-*/
-
 ?>

@@ -7,14 +7,13 @@ $userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSIO
 $useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
 $ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
 $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
-
+$isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SESSION['isadmin'] : false;
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Hoops for Hunger by Change for a 10</title>
-<link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
 <link  href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
 <link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
@@ -74,8 +73,9 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
 	
 </head>
 <body>
-        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;">
+        <img class="noprint" src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;">
         <div class="container">
+
             <header class="header">
                  
                 <table class="round" style="width: auto; float: right; background: #ffffff url('images/diagonal-gray.png');">
@@ -89,7 +89,7 @@ $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_
                                         if($loggedin == false) {
                                             echo "<a href='./login.php'>log in</a>";
                                         } else {
-                                            echo "<a href='./logout.php'>log out</a>: Logged in as ".$useremail;
+                                            echo "<a class='noproint' href='./logout.php'>log out</a>: Logged in as ".$useremail;
                                         }
                                     ?>
                                 </td>

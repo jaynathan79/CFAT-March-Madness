@@ -2,7 +2,7 @@
 	</div>
 </section>
 
-<footer>
+<footer class="noprint">
 	<nav class="round">
 		<ul>
 			<li><a href="/">About</a></li>

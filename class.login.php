@@ -6,15 +6,10 @@ session_start();
 
 class logmein {
 
-	// var $hostname_logon = "localhost:8888";
-	// 				var $database_logon = "tourney";
-	// 				var $username_logon = "root";		//Database USERNAME
-	// 				var $password_logon = "root";		//Database PASSWORD
-	
 	var $hostname_logon = "localhost";		//Database server LOCATION
-        var $database_logon = "ncaa";		//Database NAME
-        var $username_logon = "";		//Database USERNAME
-        var $password_logon = "";		//Database PASSWORD
+    var $database_logon = "ncaa";		//Database NAME
+    var $username_logon = "";		//Database USERNAME
+    var $password_logon = "";		//Database PASSWORD
 	
 	//table fields
 	var $user_table = 'users';		//Users table name
@@ -38,10 +33,10 @@ class logmein {
             return;
 	}
 
-        function get_last_error()
-        {
-            return $last_error_message;
-        }
+    function get_last_error()
+    {
+        return $last_error_message;
+    }
 
 	//login function
 	function login($username, $password){
@@ -62,6 +57,20 @@ class logmein {
                     }else{
                         return -1;
                     }
+		}else{
+			return -1;
+		}
+	}
+	
+	//login function
+	function getUserInfo($userid){
+		//conect to DB
+		$this->dbconnect();
+
+        $result = $this->qry("SELECT * FROM ".$this->user_table." WHERE userid='?';" , $userid);
+		$row=mysql_fetch_assoc($result);
+		if($row != "Error"){
+		   return $row;
 		}else{
 			return -1;
 		}

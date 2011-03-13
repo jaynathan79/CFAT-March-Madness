@@ -2,14 +2,13 @@
 
 include("admin/database.php");
 include("admin/functions.php");
-
+include("bracket_functions.php");
 
 session_start();
-$query = "SELECT closed FROM `meta` WHERE `id`=1";
-$meta = mysql_query($query,$db);
-$meta = mysql_fetch_array($meta);
 
-if($meta['closed'] == 0) {
+$closed = isClosedToSubmissions();
+
+if($closed == false) {
 	$_SESSION['errors'] = "No peeking until submission is closed!";
 	header('Location:index.php');
 	exit();
@@ -18,11 +17,11 @@ include("cfatheader.php");
 include("menu.php");
 
 $id = (int) $_GET['id'];
-$query = "SELECT * FROM `brackets` WHERE `id` = '$id'"; //select entry
+$query = "SELECT *, u.useremail, u.displayname FROM `brackets` b join users u on u.userid = b.userid WHERE b.id = '$id'";
 $picks = mysql_query($query,$db);
 $picks = mysql_fetch_array($picks);
 
-if($picks['name'] != NULL)
+if($picks['id'] != NULL)
 {
 
 	$team_query = "SELECT * FROM `master` WHERE `id`=1"; //select teams
@@ -126,28 +125,20 @@ if($picks['name'] != NULL)
 include('bracket_view_module.php');
 viewBracket( $meta, $picks, $team_data, $rank, $score_data, $best_data );
 
-
-
-$query = "SELECT * FROM `brackets` WHERE `email` = '" . $_COOKIE['useremail'] ."' LIMIT 0,1"; //select entry
+$query = "SELECT * FROM `brackets` WHERE `id` = $id LIMIT 0,1"; //select entry
 $user = mysql_query($query,$db);
 $user = mysql_fetch_array($user);
 
-?>
-
-
-
-<?php
-}else {
+} else {
 ?> 
-
-    <h2 align="center">Sorry. That bracket does not exist.</h2> 
+	<h2 align="center">Sorry. That bracket does not exist.</h2> 
     <h2 align="center"><br /> 
       Please try again. </h2> 
     <p align="center"> 
       <input type=button value="Back" onClick="history.back()" /> 
     </p> 
 <?php 	
-	}
-	include("cfatfooter.php");
+}
+include("cfatfooter.php");
 ?>
 

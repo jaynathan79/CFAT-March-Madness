@@ -19,7 +19,11 @@ if($_REQUEST['action'] == "login"){
         $_SESSION['loggedin'] = true;
         $_SESSION['useremail'] = $_REQUEST['username'];
         $_SESSION['ispaid'] = false;
-
+		
+		$userInfo = $log->getUserInfo($userid);
+		$_SESSION['ispaid'] = $userInfo["paid"];
+		$_SESSION['isadmin'] = $userInfo["userlevel"] == 1;
+		
         // registration and login were successful, redirect to welcome page
         header('Location: nextsteps.php');
         //echo "<script>window.location.href='welcome.php';</script>";

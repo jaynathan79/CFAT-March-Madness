@@ -2,7 +2,7 @@
 
 include("cfatheader.php");
 include("menu.php");
-include("admin/functions.php");
+include_once("admin/functions.php");
 
 $team_query = "SELECT * FROM `master` WHERE `id`=1";
 $team_data = mysql_query($team_query,$db);
