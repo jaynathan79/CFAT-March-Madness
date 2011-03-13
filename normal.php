@@ -1,7 +1,6 @@
 <?php
-include("header.php");
-session_start();
-
+include("cfatheader.php");
+include("menu.php");
 
 function getRankFormat ($original, $hypothetical)
 {
@@ -150,38 +149,28 @@ $scoringDescriptions .= "\"\"";
 		}
 		
 	</script>
-	<style type="text/css" >
-		.content
-			{
-				width:1100px;
-			}
-			
-			#main
-			{
-				width:1100px;
-			}
-	</style>
-		<div id="main" class="widetable">
-			<div class="full">
 
+		
+			<div class="full">
 				<h2>The Standings </h2>
-				<h3>WHERE DO YOU RANK?  </h3>
-				</div>
-				<div class="recentComment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recent Smack Talk</div>
-			<div id="border" align="left">
-			  	<table class='scoredetail' align="left" width='100%'>
+				<h3>WHERE DO YOU RANK?</h3>
+			</div>
+				
+			
+			  	<table class='scoredetail' align="center" width='100%'>
 					<tr>
-						<td><div align="center"><strong>Rank</strong></div></td>
-						<td><div align="center"><strong>Name</strong></div></td>
-						<td><div align="center"><strong>Score</strong></div></td>
-						<td><div align="center"><strong>PPR</strong></div></td>
-						<td><div align="center"><strong><a href="standings.php?type=best">Best</a></strong></div></td>
-						<td><div align="center"><strong>Tiebreaker</strong></div></td>
+						<th><strong>Rank</strong></th>
+						<th><strong>Name</strong></th>
+						<th><strong>Score</strong></th>
+						<th><strong>PPR</strong></th>
+						<th><strong>Best</strong></th>
+						<!--<th><strong><a href="standings.php?type=best">Best</a></strong></th>-->
+						<th><strong>Tiebreaker</strong></th>
 						
 						<?php
 							for( $i=0; $i<count($scoringTypeNames); $i++ )
 							{
-								echo "<td onmouseover='showScoring( event, ".$i.",0);' onmouseout='clearScoring();' >";
+								echo "<th onmouseover='showScoring( event, ".$i.",0);' onmouseout='clearScoring();' >";
 								if( $scoringTypeNames[$i] == $sortStyle )
 								{
 									echo "<div align=\"center\" class='selected_sort'>";
@@ -191,12 +180,20 @@ $scoringDescriptions .= "\"\"";
 									echo "<div align=\"center\">";
 								}
 								echo "<strong><a href=\"standings.php?type=normal&sort=".$scoringTypeNames[$i]."\">";
-								echo $scoringInfo[$scoringTypeNames[$i]]['name']."</a></strong></div></td>";
+								echo $scoringInfo[$scoringTypeNames[$i]]['name']."</a></strong></div></th>";
 							}
 						?>
 					</tr>
 					<?php				
-						$query = "SELECT main.id, main.name, main.score, best_main.score AS b_score, brackets.tiebreaker, brackets.63, brackets.email, brackets.eliminated, brackets.person
+						$query = "SELECT 
+									main.id, 
+									main.name, 
+									main.score, 
+									best_main.score AS b_score, 
+									brackets.tiebreaker, 
+									brackets.63, 
+									brackets.userid, 
+									brackets.eliminated
 								FROM 
 								scores main, 
 								best_scores best_main, 
@@ -218,15 +215,17 @@ $scoringDescriptions .= "\"\"";
 								
 								main.name ASC";
 						
+						//echo($query);
+						
 						$result = mysql_query($query,$db) or die(mysql_error());
 						$eliminated=0;
 						$top_score = -1;
 						
-						$commentMap = getCommentsMap($db);
+						
 						
 						while($user = mysql_fetch_array($result))
 						{
-							$useremail = $user['email'];
+							//echo($userid."--".$user['userid']);
 							
 							if( $top_score < 0 )
 							{
@@ -234,7 +233,7 @@ $scoringDescriptions .= "\"\"";
 							}
 
 							// Print out the contents of each row into a table
-							if (strtolower($useremail) == strtolower($_COOKIE['useremail']) & $useremail != "")
+							if ($userid == $user['userid'] )
 							{
 								echo '<tr class="thisuser">';
 							}
@@ -252,9 +251,8 @@ $scoringDescriptions .= "\"\"";
 							}
 							
 							echo "<td align='right'>&nbsp;&nbsp;".$rankings[$sortStyle][$user['id']]."</td><td>";
- 							/* If the user is the admin (has the admin cookie set), then show the names of the people that 
-the brackets belong to. */
-							if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) 
+ 							
+							if($isadmin) 
 							{
 								echo "<a href=\"view.php?id=$user[id]\">" . stripslashes($user[name]) . "</a>" . " (" . 
 stripslashes($user[person]) . ")";
@@ -265,9 +263,6 @@ stripslashes($user[person]) . ")";
 							}
 							if ($user['eliminated'] > 0 & strtolower($useremail) == strtolower($_COOKIE['useremail'] )) {
 								echo " - Eliminated";
-							}
-							if ($commentMap[$user['id']] > 0) {
-								echo "<span class=\"recentComment\"><a href='view.php?id=".$user['id']."#comments'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>";
 							}
 							echo "</td><td>";
 							echo $user['score'];
@@ -295,11 +290,8 @@ stripslashes($user[person]) . ")";
 						echo "<span class='eliminated'>&nbsp;&nbsp;Eliminated&nbsp;&nbsp;</span>";
 					}
 				?>
-				</div>			
-		</div>
+	
 
-		<div id="footer">
-		</div>
-	</div>
-</body>
-</html>
+<?php
+	include("cfatfooter.php");
+?>

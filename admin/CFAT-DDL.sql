@@ -1,4 +1,4 @@
-CREATE TABLE ncaa.`users` (
+CREATE TABLE `users` (
     userid int(11) NOT NULL auto_increment,
     useremail varchar(50) NOT NULL default '',
     displayname varchar(50) NOT NULL default '',

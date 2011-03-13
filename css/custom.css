@@ -28,6 +28,13 @@ label {
         color: #ffffff;
 }
 
+header {
+	padding: 25px;
+        vertical-align: middle;
+        color: #ffffff;
+}
+
+
 header img {
 	/*padding: 1em;*/
 	/*background: #fff;*/
@@ -203,15 +210,26 @@ table.bracketview {
 	width: 150px;
 }
 
+select.forms
+{
+	font-size: 10pt;
+	width: 170px;
+}
+
+table.bracketview {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
 table.bracketview td{
-	border: 1px;
-	border-color: #000000;
+	border: 1px solid black;
+	font-size: 10pt;
 }
 
 table.bracketentry {
 	border: 1px;
 	border-color: #000000;
-	width: 100%;
+	width: 80%;
 }
 
 table.bracketentry td{
@@ -509,4 +527,42 @@ form label, form input, form textarea {
     color: #D63301;
     background-color: #FFCCBA;
     background-image: url('validation.png');
+}
+
+.printonly{
+	display:none;
+}
+
+.strike {
+	text-decoration:line-through;
+	color: #FF0000;
+}
+
+.correction {
+	font-style: italic;
+	color: #000000;
+	font-weight: bold;
+}
+
+.right {
+	color:#006611;
+	font-weight: 800;
+}
+
+table.scoredetail td
+{
+	color:#000;
+	background-color: #c0c0c0;
+}
+
+tr.thisuser td
+{
+	color:#FFF; 
+	background-color: #000000; 
+}
+
+tr.thisuser a
+{
+	color:#FFF; 
+	background-color: #000000;
 }

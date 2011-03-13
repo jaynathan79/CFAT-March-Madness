@@ -46,11 +46,9 @@ $sweet16 = mysql_fetch_array($sweet16);
 					if($closed[0] == 1) {
 					?>
 					<li><a href="standings.php?type=normal">Standings</a></li>															
-					<li><a href="champ.php">Champion selections</a></li>
-					
-					
+					<!--<li><a href="champ.php">Champion selections</a></li>
 					<li><a href="scoredetail.php">Who picked whom?</a> - (By round)</li>
-					<li><a href="standings.php?type=best">Best possible scores</a></li>
+					<li><a href="standings.php?type=best">Best possible scores</a></li>-->
 					</ul>
 					<?php
 						if($sweet16[0] == 1) {

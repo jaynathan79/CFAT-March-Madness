@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-$query = "SELECT id,name FROM `brackets`";
+$query = "SELECT b.id, u.useremail FROM `brackets` b join users u on b.userid = u.userid ";
 $users = mysql_query($query,$db);
 ?>
 	<div id="main">
