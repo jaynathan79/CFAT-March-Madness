@@ -101,7 +101,7 @@ if($closed) {
 				<p class="highlight"><em><strong>Please note:</strong></em> 
 				A game is not selected unless it is HIGHLIGHTED. If you leave a game blank, it is an automatic loss. 
 				<?php if($meta['mail'] != 0 ) { ?>
-				If you believe you have made a mistake, <a href="contact.php">contact</a> us.</p>
+				If you believe you have made a mistake, <a href="mailto:info@changefora10.org">contact</a> us.</p>
 				<?php } else { ?>
 				If you believe you have made a mistake, notify the tourney administrator.</p>
 				<?php } ?>
@@ -438,6 +438,26 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 				
 			</form>
 		</div>
+		
+		<script>
+		
+		function setConfirmUnload(on) {
+
+		     window.onbeforeunload = (on) ? unloadMessage : null;
+
+		}
+
+		function unloadMessage() {
+
+		     return 'You have entered new data on this page.  If you navigate away from this page without first saving your data, the changes will be lost.';
+
+		}
+		(function() {
+			$(window).bind('beforeunload', function() { return confirm( 'Do you really want to leave?') ; });
+			$(':input',document.bracket).bind("change", function() { setConfirmUnload(true); }); 
+			// Prevent accidental navigation away
+		});
+		</script>
 <?php
 	include("cfatfooter.php");
 ?>
