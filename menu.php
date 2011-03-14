@@ -5,7 +5,9 @@
 	<nav class="tourney">
 	  	<ul>
 			<li><a href="index.php">HOME</a></li>
-			<?php if(!userHasBracket($userid)){ ?>
+			<?php if(userHasBracket($userid)){ ?>
+			<li><a href="view.php?id=">VIEW MY BRACKET</a></li>
+			<?php }else{ ?>
 			<li><a href="submit.php">CREATE BRACKET</a></li>
 			<?php } ?>
 			<li><a href="rules.php">RULES</a></li>

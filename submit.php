@@ -432,7 +432,7 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 				
 				<table  class="bracketentrysubmit"><tr><td>
 					<input type="submit" name="submit" value="Submit" onclick="return validateFields('All fields appear to be filled. Are you sure you want to submit this bracket?')" />
-					<input type="reset" name="reset"  value="Reset (BE CAREFUL!)" onclick="return resetBracket();" />
+					<!--<input type="reset" name="reset"  value="Reset (BE CAREFUL!)" onclick="return resetBracket();" />-->
 					<input type="submit" name="print" value="Print Your Bracket!" onclick="if(validateFields('')){ document.bracket.target='_blank'; } else { return false;}" />
 				</td></tr></table>
 				

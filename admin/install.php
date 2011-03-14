@@ -1,6 +1,5 @@
 <?php
 include 'functions.php';
-// validatecookie();
 include("database.php");
 
 ?>
@@ -39,7 +38,7 @@ include("database.php");
 		<div class="full">
 			<h2>Install Status</h2>
 <?php
-
+/*
 function parse_mysql_dump($url,$db){
 	$file_content = file($url);
 	
@@ -101,6 +100,7 @@ $update1_5 = false;
 $update1_5_1 = false;
 $new1_5_1 = false;
 
+/*
 if( $db_version == NULL )
 {	
 	if( $overwriteDb )
@@ -174,6 +174,7 @@ if( $new1_5_1 )
 {
 	parse_mysql_dump("structure_1_5_1.sql",$db);
 }
+*/
 
 if(isset($_POST['mail'])) {
 	$mail = 1;
@@ -186,13 +187,14 @@ $_POST['title'] = str_replace("'","''",$_POST['title']);
 $_POST['subtitle'] = str_replace("'","''",$_POST['subtitle']); 
 
 
-$meta = "INSERT INTO `meta` (`title`,`subtitle`,`name`,`cost`,`cut`,`cutType`,`email`,`sweet16`,`closed`,`rules`,`mail`,`region1`,`region2`,`region3`,`region4`,`db_version`) VALUES ('$_POST[title]','$_POST[subtitle]','$_POST[adminname]','$_POST[cost]','$_POST[cut]','$_POST[cutType]','$_POST[email]',0,0,'<p>No additional rules have been set.</p>','$mail','$_POST[region1name]','$_POST[region2name]','$_POST[region3name]','$_POST[region4name]','$dbschema_vers')";
+$meta = "INSERT INTO `meta` (`title`,`subtitle`,`name`,`cost`,`cut`,`cutType`,`email`,`sweet16`,`closed`,`rules`,`mail`,`region1`,`region2`,`region3`,`region4`,`db_version`) VALUES ('$_POST[title]','$_POST[subtitle]','$_POST[adminname]','$_POST[cost]','$_POST[cut]','$_POST[cutType]','$_POST[email]',0,0,'<p>No additional rules have been set.</p>','$mail','$_POST[region1name]','$_POST[region2name]','$_POST[region3name]','$_POST[region4name]','ver 1.6.0')";
 mysql_query($meta,$db) or die(mysql_error());
 
-
+/*
 $pwq = "INSERT INTO `passwords` (`label`,`value`) VALUES ('admin_password','".md5($_POST[password])."') ON DUPLICATE KEY UPDATE value = '".md5($_POST[password])."'";
 
 mysql_query($pwq,$db) or die(mysql_error());
+*/
 
 
 mysql_query("DELETE FROM `scoring` WHERE type='main'",$db) or die(mysql_error());
