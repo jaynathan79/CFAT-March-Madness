@@ -34,7 +34,7 @@ function isPaid($userid){
 
 function getSupportedCharity($userid){
 
-    $query = "SELECT supportedcharity FROM users WHERE userid = ".userid;
+    $query = "SELECT supportedcharity FROM users WHERE userid = ".$userid;
     $result = mysql_query($query);
     $row = @mysql_fetch_array($result);
     return trim($row[0]);
