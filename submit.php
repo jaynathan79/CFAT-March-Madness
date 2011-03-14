@@ -40,10 +40,11 @@ for( $i=1; $i <= 64; $i++)
 
 $closed = isClosedToSubmissions();
 if($closed) {
-	echo '<div id="main"><div class="left_side">The competition has begun.  Bracket submission is closed.</div></div><div id="footer">
-</div>';
-	exit();
+	echo '<div id="main"><div class="left_side">The competition has begun.  Bracket submission is closed.</div></div><div id="footer"></div>';
+        include("cfatfooter.php");
+        exit();
 }
+
 ?>
 	<!-- convert to jquery? -->
 	<script type="text/javascript">

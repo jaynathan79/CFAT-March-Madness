@@ -1,4 +1,20 @@
 <?php
+<<<<<<< HEAD
+include("cfatheader.php");
+include("menu.php");
+include("admin/functions.php");
+
+if(isset($_SESSION['errors'])){
+?>
+<div id="error" class="error">
+    <?=$_SESSION['errors'] && strlen($_SESSION['errors']) > 0 ?>
+	<?php unset($_SESSION['errors'])?>
+</div>
+<?php
+}
+?>			
+<h3><?=$useremail?></h3>		
+=======
     include("cfatheader.php");
 ?>
         <h1>Hoops to Fight Hunger - A <i>Change for a 10</i> event</h1>
@@ -179,7 +195,7 @@
 
         </script>
 
+>>>>>>> 2176e7d63dd81111602d57cd42da91be14286943
 <?php
-	include("sidebar.php");
-	include("cfatfooter.php");
+    include("cfatfooter.php");
 ?>

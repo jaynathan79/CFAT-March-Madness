@@ -1,4 +1,5 @@
 // The key to this array is the game number and the value is the parent node
+
 parents = new Array(-1, 
 	33, 33, 34, 34, 35, 35, 36, 36, 
 	37, 37, 38, 38, 39, 39, 40, 40, 
