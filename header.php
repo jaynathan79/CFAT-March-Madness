@@ -146,7 +146,7 @@ function resetBracket( startId )
 		<div id="subheader">
 			<div id="menu">
 			  	<ul>
-					<li><a href="index.php">HOME</a></li>
+					<li><a href="home.php">HOME</a></li>
 					<li><a href="submit.php">CREATE BRACKET</a></li>
 					<li><a href="rules.php">RULES</a></li>
 					<li><a href="choose.php">STANDINGS</a></li>
