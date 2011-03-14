@@ -7,9 +7,9 @@ session_start();
 class logmein {
 
 	var $hostname_logon = "localhost";		//Database server LOCATION
-    var $database_logon = "ncaa_prod";		//Database NAME
-    var $username_logon = "changefora10";		//Database USERNAME
-    var $password_logon = "CFAT501c32010";		//Database PASSWORD
+    var $database_logon = "ncaa_qa";		//Database NAME
+    var $username_logon = "root";		//Database USERNAME
+    var $password_logon = "admin";		//Database PASSWORD
 	
 	//table fields
 	var $user_table = 'users';		//Users table name

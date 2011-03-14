@@ -8,10 +8,9 @@ $userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSIO
 $useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
 // $ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
 $ispaid = isPaid($userid);
+$supportedCharity = getSupportedCharity($userid);
 $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
 $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SESSION['isadmin'] : false;
-
-
 
 ?>
 

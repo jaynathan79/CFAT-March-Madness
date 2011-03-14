@@ -32,6 +32,14 @@ function isPaid($userid){
     }
 }
 
+function getSupportedCharity($userid){
+
+    $query = "SELECT supportedcharity FROM users WHERE userid = ".userid;
+    $result = mysql_query($query);
+    $row = @mysql_fetch_array($result);
+    return $row[0];
+}
+
 function isClosedToSubmissions()
 {
 	$closed = "SELECT closed FROM `meta` WHERE id=1 LIMIT 1";
