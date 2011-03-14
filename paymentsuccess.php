@@ -4,5 +4,5 @@
  * and open the template in the editor.
  */
 
-header("Location: nextsteps.php");
+header("Location: home.php");
 ?>
