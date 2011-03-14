@@ -1,59 +1,54 @@
 <?php
 include("cfatheader.php");
 include("menu.php");
-
-$points = "SELECT * FROM `meta` WHERE id=1";
-$points = mysql_query($points,$db);
-if(!($points = @mysql_fetch_array($points))) {//if fetching the array fails, prompt configuration
-	echo "Please <a href=\"admin/install.htm\">configure the site.</a>\n";
-	exit();
-}
-
-$scoring = mysql_query("SELECT seed,`1`,`2`,`3`,`4`,`5`,`6` FROM `scoring` WHERE `type` = 'main' ORDER BY `seed`",$db);
 ?>
 
-			
+<h1>Rules</h1>
 
-				<h2>The Rules</h2>
-				<h3>SCORING AND SUCH</h3>
+<table>
+    <tr>
+        <td>
 
-				
-				<table class="scores">
-					<tr>
-						<td colspan="8">Value of a win by a seed in a particular round</td>
-					</tr>
-					<tr>
-						<td>Seed #</td>
-						<td>R1</td>
-						<td>R2</td>
-						<td>R3</td>
-						<td>R4</td>
-						<td>R5</td>
-						<td>R6</td>
-					</tr>
-	
-					<?php
-					while ($row = mysql_fetch_assoc($scoring))
-					{
-						echo "<tr><td>".$row['seed']."</td>";
-	
-						for( $i=1; $i < 7; $i++ )
-						{
-							echo "<td>".$row[$i]."</td>";
-						}
-	
-						echo "</tr>";
-					}
-					?>
-				</table>
-				
-				<div>
-					<strong>Other Rules</strong>
-				</div>
-				
-				<?php echo $points['rules']; ?>
+            <p>
+                <div class="privacysectiontitle">Requirements for Entry</div>
+                <div class="privacysectioncontent">
+                    You must be 18 to play. You do NOT need to donate to play or win.
+                </div>
+            </p>
+            <p>
+                <div class="privacysectiontitle">Points</div>
+                <div class="privacysectioncontent">
+                    1st Round:  2 pts each (64 possible points)<br/>
+                    2nd Round:  4 pts each (64 possible points)<br/>
+                    3rd Round: 8 pts each (64 possible points)<br/>
+                    4th Round: 16 pts each (64 possible points)<br/>
+                    5th Round:  25 pts each (50 possible points)<br/>
+                    Championship Game:  50 points if picked correctly<br/><br/>
+                    Total Possible Points:  356 points
+                </div>
+            </p>
+            <p>
+                <div class="privacysectiontitle"> Tie-Breaker Methodology</div>
+                <div class="privacysectioncontent">
+                    To determine final rank (Winner, 2nd, 3rd), when 2 or more participants are tied at the end of the tournament with the same number of points, the tie-breakers listed below will be applied, in order, to determine who has the higher “rank”.   Some participants will be dropped from the running for a certain “rank” as the tie-breakers are applied…but they will be eligible for the next available “rank” after the tie-breaker procedure determines the participant that ultimately earns the rank for which they were disqualified.
+                    <br/><br/>
+                    Tie-breakers will be applied in the following order:
+                    <br/>
+                    <ol>
+                        <li>Total points scored in the Championship game, combined score of the two teams (CLOSEST…regardless of whether you guess over or under the actual)</li>
+                        <li>Total points scored in the 5th round (50 possible pts)</li>
+                        <li>Total points scored in the 4th round (64 possible pts)</li>
+                        <li>Total points scored in the 3rd round (64 possible pts)</li>
+                        <li>Total points scored in the 2nd round (64 possible pts)</li>
+                        <li>Total points scored in the 1st round (64 possible pts)</li>
+                    </ol>
+                </div>
+            </p>
+        </td>
+    </tr>
+</table>
 				
 
 <?php
-	include("cfatfooter.php");
+include("cfatfooter.php");
 ?>

@@ -59,7 +59,7 @@
                                         <div style="font-size: 16pt; color: #000000;">
                                             2. Recruit your friends
                                             <br/>
-                                            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.changefora10.org" show_faces="true" width="450" font=""></fb:like>
+                                            <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://www.changefora10.org/index.php" show_faces="true" width="450" font="arial"></fb:like>
                                         </div>
 
                                     </td>
@@ -82,8 +82,8 @@
                                 </tr>
                                 <tr>
                                     <td style=" color: #000000;">
-                                        Your bracket will be ready on <B>Sunday, March 13 after 10pm Eastern Standard Time</B>. We'll send you and email
-                                        reminder to come back and make your picks.
+                                        The stage is set, and your bracket is ready. If you have not already received an email from us, we'll be sending
+                                        you one shortly.
                                     </td>
                                 </tr>
                             </table>
