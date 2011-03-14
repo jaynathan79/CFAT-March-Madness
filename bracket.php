@@ -68,7 +68,7 @@ while($_POST[$i] != NULL) {
 }
 
 //validate that the form was submitted to prevent spamming
-if($tiebreaker != NULL && is_numeric($tiebreaker) && $person != NULL && $email != NULL)  
+if($tiebreaker != NULL && is_numeric($tiebreaker))  
 {
 	$body = "Your bracket has been successfully submitted.";
 	$_SESSION['success'] = "<p>".$body."</p>";
