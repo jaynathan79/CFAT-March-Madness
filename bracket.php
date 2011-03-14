@@ -123,6 +123,6 @@ if($meta['mail']==1)
 	mail($useremail, "I have received your bracket","This is an automated email.  If you receive this, I have your submission.  Thanks for playing! -$meta[name]\n\n".$body, "From: <$adminEmail>");
 }
 //redirects to a confirmation notice
-header('Location:index.php');
+header('Location:home.php');
 exit();
 ?>
