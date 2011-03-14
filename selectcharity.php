@@ -17,8 +17,8 @@ Here are your choices:<br/>
         <td>
             <select id="charityselector" name="charityselector">
                 <option value="-1">Choose one...</option>
-                <option value="Local Feeding America Chapter">Local Feeding America Chapter</option>
-                <option value="Local Meals on Wheels Chapter">Local Meals on Wheels Chapter</option>
+                <option value="Local Feeding America Food Bank">Local Feeding America Food Bank</option>
+                <option value="Local Meals on Wheels">Local Meals on Wheels</option>
                 <option value="Other">Specify Other...</option>
             </select>
         </td>

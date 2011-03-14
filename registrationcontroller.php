@@ -25,7 +25,7 @@ if($_REQUEST['action'] == "login"){
 		$_SESSION['isadmin'] = $userInfo["userlevel"] == 1;
 		
         // registration and login were successful, redirect to welcome page
-        header('Location: nextsteps.php');
+        header('Location: home.php');
         //echo "<script>window.location.href='welcome.php';</script>";
     } else {
         echo "login failed.";
