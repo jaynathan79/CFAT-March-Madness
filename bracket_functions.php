@@ -21,6 +21,17 @@ function getRanksForScores( $scoreData )
 	return $rankMap;
 }
 
+function isPaid($userid){
+    $query = "SELECT paid FROM users WHERE userid = ".$userid;
+    $result = mysql_query($query);
+    $row = @mysql_fetch_array($result);
+    if($row[0] == 1){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function isClosedToSubmissions()
 {
 	$closed = "SELECT closed FROM `meta` WHERE id=1 LIMIT 1";

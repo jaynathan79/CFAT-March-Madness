@@ -67,7 +67,7 @@ class logmein {
 		//conect to DB
 		$this->dbconnect();
 
-        $result = $this->qry("SELECT * FROM ".$this->user_table." WHERE userid='?';" , $userid);
+                $result = $this->qry("SELECT * FROM ".$this->user_table." WHERE userid='?';" , $userid);
 		$row=mysql_fetch_assoc($result);
 		if($row != "Error"){
 		   return $row;

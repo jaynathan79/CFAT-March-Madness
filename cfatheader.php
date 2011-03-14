@@ -1,13 +1,18 @@
 <?php
 include("admin/database.php");
+include("bracket_functions.php");
 session_start();
 
 // these variables should be available to every page which includes cfatheader
 $userid = (isset($_SESSION['userid']) && !empty($_SESSION['userid'])) ? $_SESSION['userid'] : "";
 $useremail = (isset($_SESSION['useremail']) && !empty($_SESSION['useremail'])) ? $_SESSION['useremail'] : "";
-$ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+// $ispaid = (isset($_SESSION['ispaid']) && !empty($_SESSION['ispaid'])) ? $_SESSION['ispaid'] : false;
+$ispaid = isPaid($userid);
 $loggedin = (isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin'])) ? $_SESSION['loggedin'] : false;
 $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SESSION['isadmin'] : false;
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +79,7 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
 
             <header class="header">
                  
-                <table class="round" style="width: auto; float: right; background: #ffffff url('images/diagonal-gray.png');">
+                <table class="round noprint" style="width: auto; float: right; background: #ffffff url('images/diagonal-gray.png');">
                             <tr>
                                 <td style="color: #000; vertical-align: middle; text-align: right;">
                                     <a href="home.php">home</a> |
