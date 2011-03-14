@@ -2,22 +2,34 @@
 include("cfatheader.php");
 include("menu.php");
 include("admin/functions.php");
-
-if(isset($_SESSION['errors'])){
-?>
-<div id="error" class="error">
-    <?=$_SESSION['errors']?>
-	<?php unset($_SESSION['errors'])?>
-</div>
-
-<?php
-}
-
-include('paypal_form.php');
 ?>
 
-<h3><?=$useremail?></h3>		
+<?php if(isset($_SESSION['errors'])){ ?>
+    <div id="error" class="error">
+        <?=$_SESSION['errors']?>
+            <?php unset($_SESSION['errors'])?>
+    </div>
+<?php } ?>
+
+<table>
+    <tr>
+        <td>
+            <?php include("sidebar.php"); ?>
+        </td>
+        <td>
+            <?php
+                if(!$ispaid){
+                    echo "We notice you opted to play without donating.<br/> Would you like to donate now?<br/>";
+                    include('paypal_form.php');
+                };
+            ?>
+
+        </td>
+    </tr>
+</table>
+
+
+		
 <?php
-	include("sidebar.php");
-	include("cfatfooter.php");
+    include("cfatfooter.php");
 ?>

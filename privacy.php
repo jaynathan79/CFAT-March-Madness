@@ -75,7 +75,7 @@
                    <p>
                         <div class="privacysectiontitle">Contact Us</div>
                         <div class="privacysectioncontent">
-                            Please email us at <a href="mailto: info@changefora10.org">info@changefora10.org</a> or call us at (843) 216-6157 if you have any questions about this policy, security, or privacy.
+                            Please email us at <a href="mailto: info@changefora10.org">info@changefora10.org</a> or call us at (219) 232-8610 if you have any questions about this policy, security, or privacy.
                         </div>
                    </p>
                 </td>

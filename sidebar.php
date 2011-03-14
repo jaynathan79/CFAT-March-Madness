@@ -23,16 +23,16 @@ if($closed)
 	$rankMap = getRanksForScores($scores);
 }
 
-if($loggedin){
-	$row = getBracketForUserID($userid);
-	$mybracket = $rankMap[$row['id']]." <a href='view.php?id=".$row['id']."'>View My Bracket</a>";
-	echo $mybracket;
-}
+// if($loggedin){
+// 	$row = getBracketForUserID($userid);
+//	$mybracket = $rankMap[$row['id']]." <a href='view.php?id=".$row['id']."'>View My Bracket</a>";
+//	echo $mybracket;
+//}
 	
 ?>
 <br>
 <?php
-		$top=5;  // might make this a config setting someday
+		$top=10;  // might make this a config setting someday
 
 		echo "<h2>Top $top Standings</h2> ";
 		if($closed)

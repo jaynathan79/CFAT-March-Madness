@@ -6,10 +6,10 @@ session_start();
 
 class logmein {
 
-	var $hostname_logon = "localhost:8888";		//Database server LOCATION
-    var $database_logon = "tourney";		//Database NAME
-    var $username_logon = "root";		//Database USERNAME
-    var $password_logon = "root";		//Database PASSWORD
+	var $hostname_logon = "localhost";		//Database server LOCATION
+    var $database_logon = "ncaa_prod";		//Database NAME
+    var $username_logon = "changefora10";		//Database USERNAME
+    var $password_logon = "CFAT501c32010";		//Database PASSWORD
 	
 	//table fields
 	var $user_table = 'users';		//Users table name
@@ -183,7 +183,7 @@ class logmein {
 			//now we need to set mail headers
 			$headers = "MIME-Version: 1.0 \r\n" ;
 			$headers .= "Content-Type: text/html; \r\n" ;
-			$headers .= "From: jay.nathan@changefora10.org \r\n" ;
+			$headers .= "From: info@changefora10.org \r\n" ;
 
 			//now we are ready to send mail
 			// $sent = mail("jay.nathan@gmail.com", $subject, $msg, "From: jay.nathan@changefora10.org");
