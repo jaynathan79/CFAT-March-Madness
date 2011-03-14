@@ -69,7 +69,7 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
 	
 </head>
 <body>
-        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;" />
+        <img src="images/cfattemplogo.png" class="noprint"" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;" />
         <div class="container">
 
             <header class="header">
@@ -85,7 +85,7 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
                                         if($loggedin == false) {
                                             echo "<a href='./login.php'>log in</a>";
                                         } else {
-                                            echo "<a class='noproint' href='./logout.php'>log out</a>: Logged in as ".$useremail;
+                                            echo "<a class='noprint' href='./logout.php'>log out</a>: Logged in as ".$useremail;
                                         }
                                     ?>
                                 </td>

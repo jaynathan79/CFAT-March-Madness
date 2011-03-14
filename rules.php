@@ -18,11 +18,11 @@ include("menu.php");
             <p>
                 <div class="privacysectiontitle">Points</div>
                 <div class="privacysectioncontent">
-                    1st Round:  2 pts each (64 possible points)<br/>
-                    2nd Round:  4 pts each (64 possible points)<br/>
-                    3rd Round: 8 pts each (64 possible points)<br/>
-                    4th Round: 16 pts each (64 possible points)<br/>
-                    5th Round:  25 pts each (50 possible points)<br/>
+                    1st Round:  2 pts each (32 games, 64 possible points)<br/>
+                    2nd Round:  4 pts each (16 games, 64 possible points)<br/>
+                    3rd Round: 8 pts each (8 games, 64 possible points)<br/>
+                    4th Round: 16 pts each (4 games, 64 possible points)<br/>
+                    5th Round:  25 pts each (2 games, 50 possible points)<br/>
                     Championship Game:  50 points if picked correctly<br/><br/>
                     Total Possible Points:  356 points
                 </div>
