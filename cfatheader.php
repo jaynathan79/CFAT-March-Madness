@@ -1,6 +1,6 @@
 <?php
-include("admin/database.php");
-include("bracket_functions.php");
+include_once("admin/database.php");
+include_once("bracket_functions.php");
 session_start();
 
 // these variables should be available to every page which includes cfatheader
