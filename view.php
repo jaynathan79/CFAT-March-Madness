@@ -10,7 +10,7 @@ $closed = isClosedToSubmissions();
 
 if($closed == false) {
 	$_SESSION['errors'] = "No peeking until submission is closed!";
-	header('Location:index.php');
+	header('Location:home.php');
 	exit();
 }
 include("cfatheader.php");
