@@ -452,8 +452,8 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 		     return 'You have entered new data on this page.  If you navigate away from this page without first saving your data, the changes will be lost.';
 
 		}
-		(function() {
-			$(window).bind('beforeunload', function() { return confirm( 'Do you really want to leave?') ; });
+		$(function() {
+			//$(window).bind('beforeunload', function() { return confirm( 'Do you really want to leave?') ; });
 			$(':input',document.bracket).bind("change", function() { setConfirmUnload(true); }); 
 			// Prevent accidental navigation away
 		});
