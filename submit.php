@@ -438,6 +438,26 @@ If you want a hard copy of your bracket before the tournament begins, please PRI
 				
 			</form>
 		</div>
+		
+		<script>
+		
+		function setConfirmUnload(on) {
+
+		     window.onbeforeunload = (on) ? unloadMessage : null;
+
+		}
+
+		function unloadMessage() {
+
+		     return 'You have entered new data on this page.  If you navigate away from this page without first saving your data, the changes will be lost.';
+
+		}
+		(function() {
+			$(window).bind('beforeunload', function() { return confirm( 'Do you really want to leave?') ; });
+			$(':input',document.bracket).bind("change", function() { setConfirmUnload(true); }); 
+			// Prevent accidental navigation away
+		});
+		</script>
 <?php
 	include("cfatfooter.php");
 ?>
