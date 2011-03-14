@@ -56,6 +56,15 @@ section {
 	background: #fff;
 }
 
+.privacysectiontitle {
+    font-size: 16pt;
+    color: #000000;
+}
+
+.privacysectioncontent {
+    
+}
+
 section h1 {
 	font-size: 30px;
 	letter-spacing: -1px;

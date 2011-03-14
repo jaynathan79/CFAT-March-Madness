@@ -9,8 +9,11 @@ if(isset($_SESSION['errors'])){
     <?=$_SESSION['errors']?>
 	<?php unset($_SESSION['errors'])?>
 </div>
+
 <?php
 }
+
+include('paypal_form.php');
 ?>
 
 <h3><?=$useremail?></h3>		

@@ -14,6 +14,7 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
 <html>
 <head>
   <title>Hoops for Hunger by Change for a 10</title>
+<link href='css/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
 <link href='css/custom.css' media='screen' rel='stylesheet' type='text/css' />
 <link  href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >
 <link  href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" >

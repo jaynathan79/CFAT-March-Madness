@@ -5,8 +5,8 @@
 
         <table style="width: 100%">
             <tr>
-		<td style="vertical-align: middle; width: 50%">
-                    
+		<td style="vertical-align: top; width: 50%">
+                    <br/>
                     <p style="color: #000000; font-weight: bold; font-size: 16pt;">
                         For you $10 = 1 meal
                     </p>
@@ -27,7 +27,6 @@
                         </tr>
                     </table>
 		</td>
-                
                 <td style="vertical-align: top; width: 50%">
                     <div class="unit size1of2">
                         <!--div class="in15"-->
@@ -36,6 +35,7 @@
                             </div>
                             <form action='registrationcontroller.php' id='registerform' method='post' name='tryit'>
                                 <input name="action" id="action" value="register" type="hidden"/>
+                                <br/>
                             <table>
                                 <tr>
                                     <td colspan="2">
@@ -73,7 +73,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <p>
+                                        <p style="font-size: 10pt;">
                                             By clicking this button you acknowledge our <a href="privacy.php" target="_blank">Privacy Policy</a>
                                         </p>
                                     </td>
@@ -91,6 +91,11 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <table style="width: 90%">
                         <tr>
                             <td>
@@ -102,7 +107,7 @@
                                     </div>
                                 </div -->
                             </td>
-                            <td>
+                            <td style="vertical-align: top">
                                 <p>
                                     <b>Change for a 10</b> is about much more than a one-time pool to raise money for
                                     hunger-related profits.
