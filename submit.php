@@ -101,7 +101,7 @@ if($closed) {
 				<p class="highlight"><em><strong>Please note:</strong></em> 
 				A game is not selected unless it is HIGHLIGHTED. If you leave a game blank, it is an automatic loss. 
 				<?php if($meta['mail'] != 0 ) { ?>
-				If you believe you have made a mistake, <a href="contact.php">contact</a> us.</p>
+				If you believe you have made a mistake, <a href="mailto:info@changefora10.org">contact</a> us.</p>
 				<?php } else { ?>
 				If you believe you have made a mistake, notify the tourney administrator.</p>
 				<?php } ?>
