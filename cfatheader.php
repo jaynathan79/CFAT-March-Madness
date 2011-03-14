@@ -77,7 +77,7 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
                 <table class="round" style="width: auto; float: right; background: #ffffff url('images/diagonal-gray.png');">
                             <tr>
                                 <td style="color: #000; vertical-align: middle; text-align: right;">
-                                    <a href="register.php">register</a> |
+                                    <a href=".">home</a> |
                                     <a href="faq.php">faq</a> |
                                     <a style="font-weight: bold;" href="welcome.php">donate!</a> |
                                 

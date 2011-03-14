@@ -56,14 +56,15 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <sub style="color: #000;">
-                                            At least 6 characters, including a number / special character
-                                        </sub>
+                                        <font style="font-size: 10pt; font: italic;">
+                                            By clicking this button you acknowledge our <a href="privacy.php" target="_blank">Privacy Policy</a>
+                                        </font>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <input id="submit" class="btn_join" name='submit' type='submit' value='Join Now' />
+
                                         <br/>
                                         <br/>
                                     </td>
@@ -73,9 +74,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <p style="font-size: 10pt;">
-                                            By clicking this button you acknowledge our <a href="privacy.php" target="_blank">Privacy Policy</a>
-                                        </p>
+                                        Donations benefit hunger-related charities.
                                     </td>
                                 </tr>
                             </table>
@@ -110,7 +109,7 @@
                             <td style="vertical-align: top">
                                 <p>
                                     <b>Change for a 10</b> is about much more than a one-time pool to raise money for
-                                    hunger-related profits.
+                                    hunger-related charities.
                                 </p>
                                 <p>
                                     But before our official launch later this year, we want to have a little fun...
