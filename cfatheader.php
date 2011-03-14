@@ -62,18 +62,13 @@ $isadmin = (isset($_SESSION['isadmin']) && !empty($_SESSION['isadmin'])) ? $_SES
           })();
 
         </script>
-	<?php
-	//if this is the submit or what-if page, include the necessary javascript
-	if(strpos($_SERVER['PHP_SELF'],"submit.php") !== FALSE || strpos($_SERVER['PHP_SELF'],"whatif.php") !== FALSE) {
-	?>
-	<script type="text/javascript" src="js/submitwhatif.js"/>
-	<?php } ?>
-	<!-- end from tourney header -->
+	<script type="text/javascript" src="js/submitwhatif.js"></script>
+
 	
 	
 </head>
 <body>
-        <img class="noprint" src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;">
+        <img src="images/cfattemplogo.png" alt="Change for a 10" style="position:absolute; top: 25px; left: 25px; right: 0px; z-index: 1000;" />
         <div class="container">
 
             <header class="header">
