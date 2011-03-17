@@ -3,7 +3,7 @@ include("database.php");
 include 'functions.php';
 validatecookie();
 include("header.php");
-$query = "SELECT userid, useremail, displayname, paid FROM `users`";
+$query = "SELECT u.userid, u.useremail, u.displayname, u.paid, ifnull(b.id,-1) as bracketid FROM `users` u left join `brackets` b on b.userid = u.userid";
 $users = mysql_query($query,$db);
 ?>
 	<div id="main">
@@ -11,9 +11,10 @@ $users = mysql_query($query,$db);
 			<h2>Who Paid?</h2>
 			<table class="adminPaid">
 				<tr class="paidHeader">
-					<td class="paidPerson">User</th>
-					<td class="paidBracket">Email</th>
-					<td class="paidSelector">Paid?</th>
+					<th class="paidPerson">User</th>
+					<th class="paidBracket">Email</th>
+					<th class="paidSelector">Paid?</th>
+					<th class="paidPerson">Bracket?</th>
 				</tr>
 				<?php
 				$rowCount = 0;
@@ -23,7 +24,8 @@ $users = mysql_query($query,$db);
 					<tr>
 					<td> <?=stripslashes($user['displayname'])?></td>
 					<td> <?=stripslashes($user['useremail'])?></td>
-					<td> <?=$user['paid']?"Yes":"No"?></td>
+					<td align="center"> <?=$user['paid']?"Yes":"No"?></td>
+					<td align="center"> <?=$user['bracketid'] == -1?"NO":"Yes"?></td>
 					</tr>
 				<?php	
 				}
