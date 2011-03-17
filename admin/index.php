@@ -27,6 +27,7 @@ Obviously, you can only feasibly calculate this (hours instead of years) after t
 			<ul>
 				
 				<li><a href="paid.php">View Paid List</a></li>
+				<li><a href="paidnobracket.php">View The List of Paid Users With No Bracket</a></li>
 				<!--<li><a href="contactall.php">Contact all users</a></li>-->
 				
 				<li><a href="bracket.php">Edit Master Bracket</a></li>
