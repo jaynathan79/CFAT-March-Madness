@@ -195,7 +195,8 @@ $scoringDescriptions .= "\"\"";
 									brackets.userid, 
 									brackets.eliminated,
 									ifnull((select supportedCharity from users where users.userid = brackets.userid), \"Feeding America\") as supportedCharity,
-									(select paid from users u where u.userid = brackets.userid) as paid
+									(select paid from users u where u.userid = brackets.userid) as paid,
+									(select userlevel from users u where u.userid = brackets.userid) as userlevel
 								FROM 
 								scores main, 
 								best_scores best_main, 
@@ -255,14 +256,19 @@ $scoringDescriptions .= "\"\"";
 							
 							echo "<td align='right'>&nbsp;&nbsp;".$rankings[$sortStyle][$user['id']]."</td><td>";
  							
-							if($isadmin) 
+							if($user[paid]==1) 
 							{
-								echo "<a href=\"view.php?id=$user[id]\">" . stripslashes($user[name]) . "</a>" . "<br><small>" . 
+								echo "<a href=\"view.php?id=$user[id]\">" . strtoupper(stripslashes($user[name])) . "</a><small> <span style=\"color: green\">-DONOR-</span></small>" . "<br><small>" . 
 stripslashes($user['supportedCharity']) . "</small>";
 							}
 							else
 							{
-								echo "<a href=\"view.php?id=$user[id]\">" . stripslashes($user[name]) . "</a>";
+								echo "<a href=\"view.php?id=$user[id]\">" . strtoupper(stripslashes($user[name])) . "</a>" . "<br><small>" . 
+stripslashes($user['supportedCharity']) . "</small>";
+							}
+							if ($user[userlevel] > 0 )
+							{
+								echo " - <small>Site Admin (Not eligible to win)</small>";
 							}
 							if ($user['eliminated'] > 0 & strtolower($useremail) == strtolower($_COOKIE['useremail'] )) {
 								echo " - Eliminated";

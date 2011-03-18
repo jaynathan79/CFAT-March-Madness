@@ -55,7 +55,7 @@ if($closed)
 					}				
 					
 					$id = $score['id'];
-					$name = stripslashes($score['name']);
+					$name = strtoupper(stripslashes($score['name']));
 					echo "$rank - <a href=\"view.php?id=$id\">$name</a>";
 					echo "<br/>";
 				}
@@ -76,7 +76,7 @@ if($closed)
 	<ul id ='stats'>
 	<li>Participants: <?= getUserCount() ?></li>
 	<li>Total Brackets: <?= getBracketCount() ?></li>
-	<li>Total Paid Brackets: <?= getPaidBracketCount() ?></li>
+	<!--<li>Total Paid Brackets: <?= getPaidBracketCount() ?></li>-->
 <?php } ?>
 
 <?php
