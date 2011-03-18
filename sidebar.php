@@ -12,7 +12,7 @@ $closed = isClosedToSubmissions();
 
 if($closed)
 {
-	$query = 'SELECT * FROM `scores` WHERE `scoring_type`="main" ORDER BY `score` DESC, `name` ASC';
+	$query = 'SELECT scores.*, users.paid, users.supportedcharity, users.userlevel FROM `scores`, `brackets`, `users` WHERE scores.scoring_type="main" and brackets.id = scores.id and users.userid = brackets.userid ORDER BY `score` DESC, `name` ASC';
 	$result = mysql_query($query) or die(mysql_error());  
 	$scores;
 	while($user = mysql_fetch_array($result))
@@ -56,7 +56,8 @@ if($closed)
 					
 					$id = $score['id'];
 					$name = strtoupper(stripslashes($score['name']));
-					echo "$rank - <a href=\"view.php?id=$id\">$name</a>";
+					$charityName = ($score[userlevel]==0)?$score['supportedcharity']:"Site Admin - Not eligible to win.";
+					echo "$rank - <a href=\"view.php?id=$id\">$name</a> - <small>$charityName</small>";
 					echo "<br/>";
 				}
 				echo "<a href=\"standings.php?type=normal\">[full standings]</a><br/>";

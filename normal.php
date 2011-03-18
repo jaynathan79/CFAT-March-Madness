@@ -256,20 +256,13 @@ $scoringDescriptions .= "\"\"";
 							
 							echo "<td align='right'>&nbsp;&nbsp;".$rankings[$sortStyle][$user['id']]."</td><td>";
  							
-							if($user[paid]==1) 
-							{
-								echo "<a href=\"view.php?id=$user[id]\">" . strtoupper(stripslashes($user[name])) . "</a><small> <span style=\"color: green\">-DONOR-</span></small>" . "<br><small>" . 
-stripslashes($user['supportedCharity']) . "</small>";
-							}
-							else
-							{
-								echo "<a href=\"view.php?id=$user[id]\">" . strtoupper(stripslashes($user[name])) . "</a>" . "<br><small>" . 
-stripslashes($user['supportedCharity']) . "</small>";
-							}
-							if ($user[userlevel] > 0 )
-							{
-								echo " - <small>Site Admin (Not eligible to win)</small>";
-							}
+							$charity = ($user[userlevel]>0)?"Site Admin - Not eligible to win.":stripslashes($user['supportedCharity']);
+							$donor = ($user[paid]==1)?"-DONOR-":"";
+
+							echo "<a href=\"view.php?id=$user[id]\">" . strtoupper(stripslashes($user[name])) . "</a>";
+							echo " <small><span style=\"color: green\">$donor</span></small>";
+							echo "<br><small>$charity</small>";
+							
 							if ($user['eliminated'] > 0 & strtolower($useremail) == strtolower($_COOKIE['useremail'] )) {
 								echo " - Eliminated";
 							}
