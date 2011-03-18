@@ -193,11 +193,14 @@ $scoringDescriptions .= "\"\"";
 									brackets.tiebreaker, 
 									brackets.63, 
 									brackets.userid, 
-									brackets.eliminated
+									brackets.eliminated,
+									ifnull((select supportedCharity from users where users.userid = brackets.userid), \"Feeding America\") as supportedCharity,
+									(select paid from users u where u.userid = brackets.userid) as paid
 								FROM 
 								scores main, 
 								best_scores best_main, 
-								brackets 
+								brackets
+								
 								
 								".$additionalSortingSources."
 								
@@ -254,8 +257,8 @@ $scoringDescriptions .= "\"\"";
  							
 							if($isadmin) 
 							{
-								echo "<a href=\"view.php?id=$user[id]\">" . stripslashes($user[name]) . "</a>" . " (" . 
-stripslashes($user[person]) . ")";
+								echo "<a href=\"view.php?id=$user[id]\">" . stripslashes($user[name]) . "</a>" . "<br><small>" . 
+stripslashes($user['supportedCharity']) . "</small>";
 							}
 							else
 							{
