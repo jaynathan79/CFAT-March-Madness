@@ -1,6 +1,5 @@
 <?php
 include 'functions.php';
-validatecookie();
 include("database.php");
 
 
