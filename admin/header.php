@@ -153,7 +153,7 @@ function resetBracket()
 		<div id="subheader">
 			<div id="menu">
 			  	<ul>
-					<li><a href="../index.php">HOME</a></li>
+					<li><a href="../home.php">HOME</a></li>
 					<li><a href="../admin/">ADMIN</a></li>					
       			</ul>
 			</div>
