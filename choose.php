@@ -51,7 +51,7 @@ $sweet16 = mysql_fetch_array($sweet16);
 					<li><a href="standings.php?type=best">Best possible scores</a></li>-->
 					</ul>
 					<?php
-						if($sweet16[0] == 1) {
+						if($sweet16[0] == 1 && false) {
 					?>
 					<ul>
 					<li><a href="endgamesummary.php">End Game Scenarios</a></li>
