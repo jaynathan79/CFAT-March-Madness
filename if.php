@@ -1,6 +1,6 @@
 <?php
 include("admin/functions.php");
-include("header.php");
+include("cfatheader.php");
 
 if( $_GET['id'] != null )
 {
@@ -23,8 +23,8 @@ else
 
 <div id="main">		
 
-			<div class="right_side"><?php include("sidebar.php"); ?>
-
+			<div class="right_side">
+				<?php include("sidebar.php"); ?>
 			</div>
 
 			<div class="left_side">
@@ -34,13 +34,6 @@ else
 				<h3>WHERE WOULD YOU RANK?  </h3>
 
 				<div id="border" align="center">
-
-			  	
-<?php
-
-	
-	
-	?>
 	
 	
 	
@@ -145,10 +138,7 @@ else
 		echo "</td><td>"; 
 
 		echo "<a href=\"view.php?id=".$id."\">".stripslashes($name)."</a>";
-		if ($commentMap[$id] > 0) {
-			echo " <span class=\"recentComment\"><a href='view.php?id=".$id."#comments'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>";
-		}
-
+		
 		echo "</td><td>"; 
 
 		echo $score;					
@@ -169,15 +159,4 @@ else
 
 		</div>
 
-		
-
-		<div id="footer">
-
-		</div>
-
-	</div>
-
-</body>
-
-</html>
-
+		<?php include("cfatfooter.php") ?>
