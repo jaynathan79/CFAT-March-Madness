@@ -61,10 +61,10 @@ $childGraph = getChildGraph();
 	$query = "TRUNCATE TABLE `probability_of_winning`";
 	mysql_query($query, $db);
 	
-	$brackets = "SELECT id FROM `brackets` where paid<>'0'";
+	$brackets = "SELECT id FROM `brackets`"; // where paid<>'0'";
 	$brackets = mysql_query($brackets,$db) or die(mysql_error());
 
-	$numBracketsQuery = "SELECT count(id) count FROM `brackets` where paid<>'0'"; // winners
+	$numBracketsQuery = "SELECT count(id) count FROM `brackets`";// where paid<>'0'"; // winners
 	
 	$numBrackets = mysql_query($numBracketsQuery,$db);
 	$numBrackets = mysql_fetch_array($numBrackets, MYSQL_ASSOC);
@@ -222,7 +222,7 @@ $childGraph = getChildGraph();
 		$clear_query= "DELETE from `possible_scores_eliminated` where type ='".$type."'";
 		mysql_query($clear_query,$db) or die(mysql_error());
 		
-		$brackets_query = "SELECT * FROM `brackets` where paid='1'"; // teams
+		$brackets_query = "SELECT * FROM `brackets`"; // where paid='1'"; // teams
 		$brackets_data = mysql_query($brackets_query, $db) or die(mysql_error());;
 		
 		$brackets = array();
@@ -387,7 +387,7 @@ $childGraph = getChildGraph();
 		$query = "UPDATE `brackets` SET `eliminated` = '1'";
 		mysql_query($query,$db) or die(mysql_error());
 	
-		$query = "SELECT b.id, b.name, count(*) c FROM `brackets` b,`possible_scores` p where p.bracket_id = b.id and p.rank <= " . $maxrank . " group by b.id";
+		$query = "SELECT b.id, u.displayname, count(*) c FROM `brackets` b, `users` u, `possible_scores` p where p.bracket_id = b.id and b.userid = u.userid and p.rank <= " . $maxrank . " group by b.id";
 		
 		$alive = mysql_query($query,$db) or die(mysql_error());
 	
